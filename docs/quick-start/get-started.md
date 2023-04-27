@@ -6,9 +6,9 @@ sidebar_position: 1
 
 本章节主要介绍底座组件的部署步骤，包括相关的开源技术组件、前提条件以及快速部署，并将部署的集群添加到服务门户上。
 
-## 部署步骤
+### 部署步骤
 
-### 前提条件
+#### 前提条件
 
 如果某些组件已经部署，可以忽略，最少仅需要一个节点的 Kubernetes 集群。
 
@@ -37,14 +37,8 @@ sidebar_position: 1
   $ git clone https://github.com/kubebb/building-base.git
   ```
 
-### 快速部署手动部署
-
-#### 1. 部署 u4a-component
+#### 部署 u4a-component
 首先，需要部署 u4a-component 组件，负责提供基于 Kubernetes 的账号、认证、权限和审计的功能。并且，基于该组件底座，可以按照后面的步骤添加更多的功能组件。
-
-##### 1.1 安装 u4a-component
-
-获取本项目的源代码后，进入 u4a-component 目录，并按照以下步骤部署：
 
 > **注意**
 > 以下步骤将部署一个 ingress nginx controller，ingressclass 名字为 'portal-ingress'，同时，部署 cert-manager 用来进行证书管理.
@@ -57,6 +51,8 @@ sidebar_position: 1
 * 提供 OIDC 及 IAM 服务：oidc-server
 * 资源聚合服务，为对多个资源提供统一的视图资源：resource-view-controller
 
+获取本项目的源代码后，进入 u4a-component 目录，并按照以下步骤部署：
+
 1. 创建 namespace `u4a-namespace`
 
 ``` shell
@@ -65,8 +61,6 @@ kubectl create ns u4a-system
 
 2. 编辑 u4a-component/values.yaml（helm的配置文件） 来替换以下占位符：
 * `<replaced-ingress-nginx-ip>`, 替换为 ingress nginx 所部署节点的 IP
-* `<replaced-oidc-proxy-node-name>`, 替换为 kube-oidc-proxy 所部署节点的名称
-* `<replaced-oidc-proxy-node-ip>`, 替换为 kube-oidc-proxy 所部署节点的 IP
 * 如果使用自己的镜像仓库，注意更新 registryServer 及其他镜像地址
 
 3. 编辑 `charts/cluster-component/values.yaml` 文件，替换`<replaced-ingress-node-name>` 为 ingress nginx 所部署节点的名称
@@ -77,7 +71,7 @@ kubectl create ns u4a-system
         <replaced-ingress-node-name>
     ```
 
-4. 使用 helm 安装 u4a-component
+2. 使用 helm 安装 u4a-component
 
     ```
     # 部署组件
@@ -101,7 +95,7 @@ kubectl create ns u4a-system
     resource-view-controller-76d8c79cf-smkj5                      1/1     Running   0          66m
     ```
 
-5. 在安装成功结束后，控制台会有以下提示:
+3. 在安装成功结束后，控制台会有以下提示:
 
     ```
     NOTES:
@@ -133,7 +127,14 @@ kubectl create ns u4a-system
 
 现在通过服务门户，已经将当前的部署集群进行了纳管；同时，在“租户管理”中，会有一个默认的系统租户，名称为'system-tenant'.
 
-## 部署更多组件
-浏览 [组件市场](/docs/category/%E7%BB%84%E4%BB%B6%E5%B8%82%E5%9C%BA)，安装更多需要的服务组件到门户中，比如：
-* [kubedashboard](/docs/component-market/kubedashboard)
-* [kubelogin](/docs/component-market/kubelogin)
+### 2. 获取更多组件
+浏览 [组件市场](../component-market)，安装更多需要的服务组件到门户中，比如：
+* [kubedashboard](../component-market/kubedashboard)
+* [kubelogin](../component-market/kubelogin)
+
+### 3. 卸载
+  ```
+  helm uninstall cluster-comoponent -n u4a-system
+  helm uninstall u4a-component -n u4a-system
+  kubectl delete ns u4a-system
+  ```

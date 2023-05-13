@@ -112,8 +112,9 @@ kubectl create ns u4a-system
 
     `https://portal.<replaced-ingress-nginx-ip>.nip.io`
 
-    注意：如果由于环境不支持自动解析 nip.io, 可以手动将域名和 ip 的映射添加到本地的 hosts 文件中. 使用默认的 admin/kubebb-admin 用户信息登录。
+- 注意：如果由于环境不支持自动解析 nip.io, 可以手动将域名和 ip 的映射添加到本地的 hosts 文件中. 使用默认的 admin/kubebb-admin 用户信息登录，登录后控制台如下图所示：
 
+![图 2](images/5e2e1023efba5f947965f4e079471928781ee74cff236bb0872267d111237626.png) 
 
 7. 环境准备，创建集群管理的 namespace，目前必须使用 'cluster-system'.
 
@@ -128,9 +129,9 @@ kubectl create ns u4a-system
 现在通过服务门户，已经将当前的部署集群进行了纳管；同时，在“租户管理”中，会有一个默认的系统租户，名称为'system-tenant'.
 
 ### 2. 获取更多组件
-浏览 [组件市场](../component-market)，安装更多需要的服务组件到门户中，比如：
-* [kubedashboard](../component-market/kubedashboard)
-* [kubelogin](../component-market/kubelogin)
+浏览 [组件市场](/docs/category/组件市场)，安装更多需要的服务组件到门户中，比如：
+* [kubedashboard](/docs/component-market/kubedashboard)
+* [kubelogin](/docs/component-market/kubelogin)
 
 ### 3. 卸载
   ```

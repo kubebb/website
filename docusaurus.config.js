@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Framework as a Building Block for Kubernetes',
   tagline: '在 Kubernetes 上以搭积木的方式构建自己的服务门户',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   // Set the production url of your site here
   url: 'http://kubebb.k8s.com.cn',
@@ -61,10 +61,11 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'Kubebb',
+        title: '',
         logo: {
           alt: 'Kubebb Logo',
-          src: 'img/logo.svg',
+          src: "img/kubebb-logo-black.png",
+          srcDark: "img/kubebb-logo-white.png",
         },
         items: [
           {

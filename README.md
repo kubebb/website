@@ -16,20 +16,24 @@ npm run serve
 ```
 
 For now, we're mainly using markdown to write docs, so most of the content is under the directory below:
+
 1. docs/, for English markdown files
 2. i18n/zh-Hans/docusaurus-plugin-content-docs/current, for Chinese markdown files
 
 So under each directory above, they should have the same structure. You can update or put new markdown files as the existing ones, and they'll show up normally.
 
 You can copy between different languages like:
+
 ```
 cp -r docs/<some-file> i18n/zh-Hans/docusaurus-plugin-content-docs/current/<some-file>
 ```
 
 ### i18n Tips
+
 For how docusaurus supports i18n, you can get the details [i18n Support](https://docusaurus.io/docs/i18n/introduction)
 
 For translation of docs sidebar category labels, you can run the command below to generate the current.json file under other languages, and then translate it under i18n. For example:
+
 ```
 npm run write-translations -- --locale zh-Hans
 ```
@@ -37,6 +41,7 @@ npm run write-translations -- --locale zh-Hans
 ### Production
 
 Build docker image to deploy
+
 ```
 # Run the docker build only once to create the base image
 # Also need to run if node modules is updated
@@ -49,4 +54,5 @@ docker build -t kubebb/websites:<tag> .
 ```
 
 #### Thanks to Docusaurus
+
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.

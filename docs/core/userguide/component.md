@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2
 ---
-
 # 组件
 
 组件是将 `chart package` 映射为集群资源的一个概念，组件定义了 `chart package` 的基础描述信息，版本信息等。组件一般由仓库创建出来，无需手动创建。
@@ -13,6 +12,7 @@ sidebar_position: 2
 下面是手动创建一个组件示例：
 
 1. 准备组件 component.yaml
+
 ```yaml
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: Component
@@ -84,56 +84,47 @@ kubectl -nkubebb-system patch component.core.kubebb.k8s.com.cn repository-bitnam
 
 ## CRD 定义说明
 
-CRD 的代码定义位于 [ComponentTypes](https://github.com/kubebb/core/blob/main/api/v1alpha1/component_types.go)。组件的信息都定在 `status` 中， 接下来会详细介绍每个字段的含义及其作用。 
+CRD 的代码定义位于 [ComponentTypes](https://github.com/kubebb/core/blob/main/api/v1alpha1/component_types.go)。组件的信息都定在 `status` 中， 接下来会详细介绍每个字段的含义及其作用。
 
 - `status.name`
 
-    该字段用来保存 `chart package` 的名字。
-
+  该字段用来保存 `chart package` 的名字。
 - `status.versions`
 
-    该字段是数组，用来保存 `chart package` 的多个版本。每个版本包含的信息如下
+  该字段是数组，用来保存 `chart package` 的多个版本。每个版本包含的信息如下
 
-    - `status.versions[index].appVersion` 定义 `chart packge` 里面的应用的版本信息。
-    - `status.versions[index].createdAt` 创建时间
-    - `status.versions[index].updatedAt` 更新时间
-    - `status.versions[index].deprecated` 当前版本是否废弃
-    - `status.versions[index].version` `chart package` 的版本信息
-    - `status.versions[index].digest` 数字签名
+  - `status.versions[index].appVersion` 定义 `chart packge` 里面的应用的版本信息。
+  - `status.versions[index].createdAt` 创建时间
+  - `status.versions[index].updatedAt` 更新时间
+  - `status.versions[index].deprecated` 当前版本是否废弃
+  - `status.versions[index].version` `chart package` 的版本信息
+  - `status.versions[index].digest` 数字签名
+- `status.description`
 
-- `status.description` 
-
-    `chart package` 的描述信息
-
+  `chart package` 的描述信息
 - `status.maintainers`
 
-    该字段是数组类型，每一项都是 `chart package` 的维护者。每一项的包含的信息如下
+  该字段是数组类型，每一项都是 `chart package` 的维护者。每一项的包含的信息如下
 
-    - `status.maintainers[index].name` 维护者名字
-    - `status.maintainers[index].email` 维护者的邮箱
-    - `status.maintainers[index].url` 维护者的网站
-
-
+  - `status.maintainers[index].name` 维护者名字
+  - `status.maintainers[index].email` 维护者的邮箱
+  - `status.maintainers[index].url` 维护者的网站
 - `status.home`
 
-    组件的官网。
-
+  组件的官网。
 - `status.soureces`
 
-    该字段是字符串数组类型，定义组件代码仓库。
-
+  该字段是字符串数组类型，定义组件代码仓库。
 - `status.keywords`
 
-    该字段是字符串数组类型，定义与该组件关联的关键词。
-
+  该字段是字符串数组类型，定义与该组件关联的关键词。
 - `status.icon`
 
-    定义该组件的图标
-
+  定义该组件的图标
 - `status.deprecated`
 
-    定义当前组件是否废弃
+  定义当前组件是否废弃
 
 ## 工作原理
 
-组件也实现为 Kubernetes Operator，主要功能就是当组件创建，更新给每个组件添加label `kubebb.component.repository=<repository-name>`，方便搜索。
+组件也实现为 Kubernetes Operator，主要功能就是当组件创建，更新给每个组件添加 label `kubebb.component.repository=<repository-name>`，方便搜索。

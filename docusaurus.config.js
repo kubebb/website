@@ -117,6 +117,10 @@ const config = {
                 label: '教程',
                 to: '/docs/intro',
               },
+              {
+                label: '内核',
+                to: '/docs/category/内核',
+              },
             ],
           },
           {

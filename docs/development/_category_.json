@@ -1,8 +1,0 @@
-{
-  "label": "组件开发",
-  "position": 4,
-  "link": {
-    "type": "generated-index",
-    "description": "基于 Kubebb 开发自己服务组件，并添加到服务门户"
-  }
-}

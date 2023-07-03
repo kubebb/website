@@ -1,8 +1,0 @@
-{
-  "label": "内核",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "description": "KubeBB 管理组件生命周期的内核"
-  }
-}

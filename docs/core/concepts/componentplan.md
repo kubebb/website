@@ -102,36 +102,100 @@ spec:
 :::
 
 - `spec.componet`
+
   该字段用来指明要监控的组件实例，一般使用 `namespace` 和 `name` 来唯一确定
 - `spec.repository`  *可选字段*
+
   该字段用来指明要监控的组件所在的仓库实例，一般使用 `namespace` 和 `name` 来唯一确定，一般由控制器自动填充，不需要用户填写
 - `spec.version`
+
   需要安装的组件版本。
 - `spec.approved`
+
   是否同意安装。`bool` 类型，`true` 或 `false`，当为 `true` 时，自动触发安装流程。为 `false` 时，只会解析这个组件的 `manifest` 到 `ConfigMap` 中，不会安装。这时候，可以修改 `ConfigMap` 中的 `manifest`，实现进一步控制。
 - `spec.name`
+
   组件安装到集群中的名称。类似 `helm release` 的名称
+- `spec.force` *可选字段*
+
+  布尔值，更新时通过替换策略强制更新资源, 类似 `helm upgrade --force` 参数，默认为 `false`
+- `spec.timeoutSeconds` *可选字段*
+
+  整数值，创建/更新/删除时的超时时间，单位为秒，默认为 `300`，即 5 分钟。类似 `helm install/upgrade --timeout` 参数
+- `spec.wait` *可选字段*
+
+  布尔值，如果设置为 `true`，将等待所有的 Pod、PVC、Service 和 Deployment、StatefulSet 或 ReplicaSet 的最小数量的 Pod 处于就绪状态才认为安装/更新成功。等待的时间即为 `spec.timeoutSeconds` 的值，默认为 `false`，类似 `helm install/upgrade --wait` 参数。
+- `spec.waitForJobs` *可选字段*
+
+  布尔值，如果设置为 `true`，将等待所有的 Job 完成才认为安装/更新成功。等待的时间即为 `spec.timeoutSeconds` 的值，默认为 `false`，类似 `helm install/upgrade --wait-for-jobs` 参数。
+- `spec.description` *可选字段*
+
+  给安装/更新添加一个自定义描述。默认为空，类似 `helm install/upgrade --description` 参数。
+- `spec.dependencyUpdate` *可选字段*
+
+  布尔值，在安装/更新组件前，是否更新缺少的依赖项。类似 `helm install/upgrade --dependency-update` 参数，默认为 `false`
+- `spec.disableHooks` *可选字段*
+
+  布尔值，如果设置为 `true`，则阻止 Hook 在安装过程中运行，并禁用升级前/后 Hook，类似 `helm install/upgrade --no-hooks` 参数，默认为 `false`
+- `spec.disableOpenAPIValidation` *可选字段*
+
+  布尔值，如果设置为 `true`，安装过程将不会根据 Kubernetes OpenAPI Schema 验证渲染的模板。类似 `helm install/upgrade --disable-openapi-validation` 参数 默认为 `false`
+- `spec.atomic` *可选字段*
+
+  布尔值，如果设置为 `true`，安装/更新过程会在安装/更新失败时删除安装。如果 `spec.atomic` 设置为 `true`，将自动设置 `spec.wait` 为 `true`。类似 `helm install/upgrade --atomic` 参数，默认为 `false`
+- `spec.skipCRDs` *可选字段*
+
+  布尔值，如果设置为 `true`，则跳过 CRD 的安装。默认情况下，如果尚未安装 CRD，会自动安装。类似 `helm install/upgrade --skip-crds` 参数，默认为 `false`
+- `spec.enableDNS` *可选字段*
+
+  布尔值，在渲染模板时是否启用 DNS 查询，类似 `helm install/upgrade --enable-dns` 参数 默认为 `false`
+- `spec.historyMax` *可选字段*
+
+  整数值，限制每个 release 保存的最大 revisions 数目。使用 `0` 表示无限制，默认为 `10`
+- `spec.maxRetry` *可选字段*
+
+  整数值，创建/更新最大重试次数，默认为 `5`
 - `spec.override` *可选字段*
+
   用于覆盖原组件配置的字段。
+
   - `spec.override.values`
+
     `JSON` 格式的 `values`，用于覆盖默认值
   - `spec.override.valuesFrom`
+
     字段为数组。当要设定的字段偏多时，我们一般希望把 `values.yaml` 单独拿出来，放在 `ConfigMap` 或者 `Secret` 中，而且我们可能会有很多 `values.yaml` 文件。具体格式为：
+
     - `spec.override.valuesFrom[].kind` `Secret` 或 `ConfigMap`
     - `spec.override.valuesFrom[].name` `Secret` 或 `ConfigMap` 的名称，不需要 `namespace` 字段，因为只会查找和当前 ComponentPlan 同 `namespace` 的资源。
     - `spec.override.valuesFrom[].valuesKey` `Secret` 或 `ConfigMap` 的 `data` 中的 `key`，默认为 `values.yaml` 会尝试先后查询 `ConfigMap` 中的 `Data` 和 `BinaryData` 字段，`Secret` 中的 `StringData` 和 `Data` 字段。
-  - `spec.override.set` 类似 `helm template --set` 的参数
-  - `spec.override.set-string` 类似 `helm template --set-string` 的参数
-  - `spec.override.set-file` 类似 `helm template --set-file` 的参数
-  - `spec.override.set-json` 类似 `helm template --set-json` 的参数
-  - `spec.override.set-literal` 类似 `helm template --set-literal` 的参数
+  - `spec.override.set`
+
+    数组，类似 `helm template --set` 的参数
+  - `spec.override.set-string`
+
+    数组，类似 `helm template --set-string` 的参数
   - `spec.override.images`
+
     数组。类似 `kustomize` 的镜像自定义参数
-    - `spec.override.images[].name` 去除 `tag` 后的原始镜像名称
-    - `spec.override.images[].newName` 替代原始镜像名称的名称
-    - `spec.override.images[].newTag` 替代原始 `tag` 的新 `tag` 名称
-    - `spec.override.images[].digest` 替代原始 `tag` 的新 `digest`，如果 `digest` 有值，会忽略 `newTag` 的值。
+
+    - `spec.override.images[].name`
+
+      去除 `tag` 后的原始镜像名称
+    - `spec.override.images[].newName`
+
+      替代原始镜像名称的名称
+    - `spec.override.images[].newTag`
+
+      替代原始 `tag` 的新 `tag` 名称
+    - `spec.override.images[].digest`
+
+      替代原始 `tag` 的新 `digest`，如果 `digest` 有值，会忽略 `newTag` 的值。
 
 ## 工作原理
 
 组件安装计划以 Kubernetes Operator 方式实现。使用标准 `helm` 命令将 helm chart 包下载到本地后，首先通过 `helm template` 命令生成组件的 `manifest` 文件，然后执行 `Repository` 和 `ComponentPlan` 上的各种覆盖配置，比如镜像的覆盖配置，然后将结果放到同命名空间的名为 `manifest.<componentPlanName>` 的 `ConfigMap` 中，如果当前 `ComponentPlan` 的 `spec.approved` 字段为 `true`，那么会直接安装，如果为 `false`，会暂时停止在这里，直到这个字段为 `true`，这时，用户可以通过浏览 `ComponentPlan` 中的 `Status` 字段来查看安装这个组件会对集群中现有的资源造成什么影响，当前组件安装计划会新创建哪些资源，又会对哪些资源有修改。如果不满意，还可以直接修改 `manifest` 的 `ConfigMap`，满意后，然后再将 `spec.approved` 改为 `true`，进行安装。
+
+### 镜像覆盖策略
+
+![image-changed](../images/image-changed.svg)

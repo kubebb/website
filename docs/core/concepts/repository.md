@@ -125,3 +125,7 @@ spec:
 2. 当 `Repoistory` 删除时
 
 由 `Repository` 创建出来的 `Component` 都会添加 `OwnerReferences`，删除 `Repository` 的时候会自动删除关联的 `Component`。
+
+3. 镜像覆盖策略
+
+![image-changed](../images/image-changed.svg)

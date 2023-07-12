@@ -128,4 +128,4 @@ spec:
 
 3. 镜像覆盖策略
 
-![image-changed](../images/image-changed.svg)
+![image-changed](../images/image-changed.png)

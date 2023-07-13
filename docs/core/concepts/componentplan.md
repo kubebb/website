@@ -3,7 +3,7 @@ sidebar_position: 3
 ---
 # 组件安装计划
 
-组件安装计划类似于 Kubernetes 原生资源 Job，执行一次性任务，安装一个组件到集群，类似执行一次 `helm install`。
+组件安装计划类似于 Kubernetes 原生资源 Job，执行一次性任务，安装一个组件到集群，类似执行一次 `helm install` 或者 `helm upgrade`
 
 ## 使用
 
@@ -13,6 +13,8 @@ sidebar_position: 3
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
 kind: ComponentPlan
 metadata:
+# labels:
+#   core.kubebb.k8s.com.cn/componentplan-release: nginx
   name: nginx-15.0.2
   namespace: kubebb-system
 spec:
@@ -45,6 +47,9 @@ spec:
 #      type: Succeeded
 #  images:
 #    - docker.io/bitnami/nginx:latest
+#  installedRevision: 3
+#  latest: true
+#  observedGeneration: 5
 #  resources:
 #    - NewCreated: true
 #      apiVersion: v1
@@ -198,4 +203,8 @@ spec:
 
 ### 镜像覆盖策略
 
-![image-changed](../images/image-changed.svg)
+![image-changed](../images/image-changed.png)
+
+### 组件安装计划和 Helm release 的关系
+
+![componentplan](../images/componentplan-helm-release.png)

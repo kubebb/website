@@ -50,7 +50,7 @@ KubeBB 由若干个项目组成：
 - 如果你发现文档有一些错误，请尝试修改它！
 - 等等
 
-### 创建一个 PR 的流程
+### 创建PR
 
 提出 PR，我们假设你已经注册了一个 GitHub ID。然后你可以按照以下步骤完成准备工作：
 
@@ -84,15 +84,43 @@ KubeBB 由若干个项目组成：
 
    在新的分支改动后可以构建和测试你的代码。
 
-### PR 描述
+### PR规范
 
-通过创建 PR 是对 KubeBB 项目的文件进行修改的唯一途径。
+通过创建 PR 是对 KubeBB 项目的文件进行修改的唯一途径.
 
-为了帮助 reviewer 更好地理解你创建的 PR 的目的，PR 描述不能太粗略。
+```bash
+git commit --signoff -m "description of this PR"
+```
 
-### 提案
+为了帮助 reviewer 更好地理解你创建的 PR 的目的，PR描述需符合如下规范:
 
-如果你要贡献一个带有新的 API 或需要大量工作的功能，请先提交一份提案。
+```bash
+<type>: <description>
+
+[optional body]
+```
+
+其中，`type`  种类包括:
+
+- `feat` - 引入了新功能
+- `fix` - 修复了一个错误
+- `chore` - 与修复或功能无关的更改，不修改源代码或测试文件（例如更新依赖项）
+- `refactor` - 重构的代码，既不修复错误也不添加功能
+- `docs` - 更新文档，如README或其他markdown文件
+- `style` - 不影响代码含义的更改，通常与代码格式相关，如空格、缺少分号等。
+- `test` - 包括新的测试或更正之前的测试
+- `perf` - 性能改进
+- `ci` - 与持续集成相关
+- `build` - 影响构建系统或外部依赖项的更改
+- `revert` - 撤销先前的提交
+
+如果PR为对应解决某个 `issue` ，必须在PR出，添加 `Fix: #1 #2` ，如下图:
+
+![pr_example](./images/pr_example.png)
+
+### 代码规范
+
+- Go语言规范，参考[uber-go/guide](https://github.com/uber-go/guide/blob/master/style.md)
 
 ## 参与帮助任何事情
 

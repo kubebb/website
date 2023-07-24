@@ -1,14 +1,21 @@
 ---
-sidebar_position: 2
+sidebar_position: 4
 ---
 
 # 体验自定义配置
 
+:::tip
+安装前需完成[安装底座组件](./buildingbase_quickstart)。
+:::
+
 1. 自定义门户的主色调
+
 ```shell
 kubectl edit cm portal-global-configs -n u4a-system
 ```
+
 修改 primaryColor 即可自定义门户主色调
+
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -22,6 +29,7 @@ data:
 2. 自定义菜单
 
 kubebb 的所有菜单均基于 menu 的 CRD 进行定义，如果需要添加自己的菜单，可以参考以下 memnu 示例:
+
 ```yaml
 # 主菜单
 apiVersion: component.t7d.io/v1beta1

@@ -12,7 +12,7 @@ sidebar_position: 3
 安装前需完成[安装内核](./core_quickstart)。
 :::
 
-### 部署底座组件
+### 部署
 
 #### 1. 创建官方组件仓库
 
@@ -30,7 +30,7 @@ sidebar_position: 3
 
 #### 3. 部署`Cluster Component`
 
-组件部署信息如下:
+组件部署信息`cluster_componentplan.yaml`如下:
 
 > 详细可[参考](https://github.com/kubebb/components/tree/main/examples/cluster-component)
 
@@ -58,15 +58,40 @@ spec:
 
 > 此处基于[kind开发集群](./prerequisite#kind开发集群)的`kubebb-core-control-plane`节点。
 
+通过一下命令部署:
+
+```shell
+    kubectl apply -nu4a-system -f cluster_componentplan.yaml
+```
+
 `Cluster Component`部署完成后，可通过以下命令查看组件部署状态:
 
 ```shell
     kubectl get componentplan -nu4a-system cluster-component -oyaml
 ```
 
+当组件部署状态如下时，表示组件部署成功:
+
+```yaml
+status:
+  conditions:
+  - lastTransitionTime: "2023-07-25T08:15:41Z"
+    reason: ""
+    status: "True"
+    type: Approved
+  - lastTransitionTime: "2023-07-25T08:15:44Z"
+    reason: InstallSuccess
+    status: "True"
+    type: Actioned
+  - lastTransitionTime: "2023-07-25T08:15:44Z"
+    reason: ""
+    status: "True"
+    type: Succeeded
+```
+
 #### 4. 部署`U4A Component`
 
-组件部署信息如下:
+组件部署信息`u4a_componentplan.yaml`如下:
 
 ```yaml
 apiVersion: core.kubebb.k8s.com.cn/v1alpha1
@@ -90,6 +115,12 @@ spec:
 ```
 
 其中,组件`U4A-Component`的参数通过`ConfigMap`方式注入，`ConfigMap`的创建流程可参考[U4A组件部署流程](https://github.com/kubebb/components/tree/main/examples/u4a-component#install-u4a-component)
+
+通过一下命令部署:
+
+```shell
+    kubectl apply -nu4a-system -f u4a_componentplan.yaml
+```
 
 `U4A Component`部署完成后，可通过以下命令查看组件部署状态:
 
@@ -116,7 +147,7 @@ kube-oidc-proxy-server-ingress   <none>   k8s.172.18.0.2.nip.io                8
 
 > 注意: 由于使用了[nip.io](https://nip.io/)作为域名解析服务，因此需要将`HOSTS`中的域名解析到`ADDRESS`对应的IP地址上。
 
-### 卸载底座组件
+### 卸载
 
 #### 1. 卸载`U4A Component`
 
@@ -130,9 +161,9 @@ kube-oidc-proxy-server-ingress   <none>   k8s.172.18.0.2.nip.io                8
     kubectl delete componentplan -nu4a-system cluster-component
 ```
 
-## 通过Helm手动部署
+## 通过Helm部署
 
-### 部署底座组件
+### 部署
 
 首先，需要部署 u4a-component 组件，负责提供基于 Kubernetes 的账号、认证、权限和审计的功能。并且，基于该组件底座，可以按照后面的步骤添加更多的功能组件。
 
@@ -229,7 +260,7 @@ kubectl create ns u4a-system
 
 现在通过服务门户，已经将当前的部署集群进行了纳管；同时，在“租户管理”中，会有一个默认的系统租户，名称为'system-tenant'.
 
-### 卸载底座组件
+### 卸载
 
   ```
   helm uninstall cluster-comoponent -n u4a-system

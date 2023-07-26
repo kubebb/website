@@ -68,27 +68,27 @@ spec:
 通过 `status` 字段可以看到，当前组件涉及的镜像以及资源。其中资源会标明是新创建还是更新现有资源，一个更新现有资源的例子为：
 
 ```yaml
-  - apiVersion: v1
-    kind: Service
-    name: my-wordpress
-    specDiffwithExist: no spec diff, but some field like resourceVersion will update
-  - apiVersion: apps/v1
-    kind: Deployment
-    name: my-wordpress
-    specDiffwithExist: |
-      metadata:
-        annotations: map[deployment.kubernetes.io/revision:2] -> <empty> (REMOVED)
-      spec:
-        replicas: 3 -> 1
-        template:
-          spec:
-            containers:
-              '[#0]':
-                image: docker.io/bitnami/wordpress:6.2.2-debian-11-r9 -> docker.io/bitnami/wordpress:6.2.2-debian-11-r11
-                resources:
-                  requests:
-                    cpu: 400m -> 300m
-                    memory: 1Gi -> 512Mi
+- apiVersion: v1
+  kind: Service
+  name: my-wordpress
+  specDiffwithExist: no spec diff, but some field like resourceVersion will update
+- apiVersion: apps/v1
+  kind: Deployment
+  name: my-wordpress
+  specDiffwithExist: |
+    metadata:
+      annotations: map[deployment.kubernetes.io/revision:2] -> <empty> (REMOVED)
+    spec:
+      replicas: 3 -> 1
+      template:
+        spec:
+          containers:
+            '[#0]':
+              image: docker.io/bitnami/wordpress:6.2.2-debian-11-r9 -> docker.io/bitnami/wordpress:6.2.2-debian-11-r11
+              resources:
+                requests:
+                  cpu: 400m -> 300m
+                  memory: 1Gi -> 512Mi
 ```
 
 ## CRD 定义说明
@@ -196,6 +196,106 @@ spec:
     - `spec.override.images[].digest`
 
       替代原始 `tag` 的新 `digest`，如果 `digest` 有值，会忽略 `newTag` 的值。
+
+## 状态描述
+
+一个典型的组件安装计划状态示例如下：
+
+```yaml
+status:
+  conditions:
+  - lastTransitionTime: "2023-07-25T12:22:12Z"
+    reason: ""
+    status: "True"
+    type: Approved
+  - lastTransitionTime: "2023-07-25T12:25:00Z"
+    message: timed out waiting for the condition
+    reason: UpgradeFailed
+    status: "False"
+    type: Actioned
+  - lastTransitionTime: "2023-07-25T12:25:00Z"
+    reason: ""
+    status: "False"
+    type: Succeeded
+  images:
+  - docker.io/bitnami/nginx:xxxxx
+  installedRevision: 4
+  latest: true
+  observedGeneration: 1
+  resources:
+  - NewCreated: true
+    apiVersion: v1
+    kind: Service
+    name: my-nginx
+  - NewCreated: true
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-nginx
+```
+
+- `status.conditions`
+  
+  组件安装计划（ComponentPlan）状态
+  
+  - `status.conditions[].lastTransitionTime` 
+  
+    上次从一种状态转换到另一种状态时的时间戳
+  - `status.conditions[].reason` 
+  
+    机器可读的、驼峰编码（UpperCamelCase）的文字，表述上次状况变化的原因
+  - `status.conditions[].message` 
+    
+    人类可读的消息，给出上次状态转换的详细信息
+  - `status.conditions[].status` 
+    
+    表明该状况是否适用，可能的取值有 `True"`、`False` 或 `Unknown`
+  - `status.conditions[].type` 
+    
+    状况的名称
+
+    可能包含以下状态：
+
+    - `Approved` 
+      
+      用户已经同意该组件安装计划（ComponentPlan）的安装
+    - `Actioned`
+      
+      某个操作已经完成
+    - `Succeeded` 
+      
+      用户期待的操作已经全部完成
+
+- `status.images`
+
+  该组件安装计划（ComponentPlan）会引入的镜像列表
+- `status.installedRevision`
+
+  该组件安装计划（ComponentPlan）安装的helm release revision版本。
+- `status.latest`
+
+  helm release 的最新版本是否是该组件安装计划（ComponentPlan）安装的。支持多个组件安装计划（ComponentPlan）按部署时间安装/升级同一个 helm release。
+- `status.observedGeneration`
+
+  用于程序内部处理。表示该组件安装计划（ComponentPlan）基于的 `.metadata.generation` 的过期次数。 例如，如果 `.metadata.generation` 当前为 12，但 `.status.observedGeneration` 为 9， 则相对于实例的当前状态已过期。
+- `status.resources`
+
+  组件安装计划（ComponentPlan）涉及的资源
+  
+  - `status.resources[].specDiffwithExist` 
+  
+    展示该资源的manifest在该组件安装计划（ComponentPlan）应用前后的对比
+  - `status.resources[].NewCreated` 
+  
+    布尔值，该资源是否是新创建的
+  - `status.resources[].kind`
+    
+    该资源的类型
+  - `status.resources[].name`
+    
+    该资源的名称
+  - `status.resources[].apiVersion`
+    
+    该资源的 apiVersion 信息
 
 ## 工作原理
 

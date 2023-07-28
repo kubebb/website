@@ -92,13 +92,17 @@ spec:
   数组的每一项的介绍
 
   - `spec.filter[index].name` 定义了要参与过滤的 `chart package` 的名称。
-  - `spec.filter[index].operation` 有两个可选值 `keep`, `ignore`。`ignore` 表示忽略当前的 `chart package`, `keep` 表示会保留 `chart package` 并对当前的 `chart pakcage` 的版本进行过滤。
-  - `spec.filter[index].deprecated` `false` 表示不保留 `chart package` 已经废弃的版本，`true` 表示保留。
+  - `spec.filter[index].operation` 有两个可选值 `keep`, `ignore`。`ignore` 定义 `chart package` 要忽略的版本, `keep` 定义 `chart package` 要保留的版本。
+  - `spec.filter[index].keepDeprecated` `false` 表示不保留 `chart package` 已经废弃的版本，`true` 表示保留。
   - `spec.filter[index].versionedFilterCond.versions` 是一个版本的数组，只要 `chart package` 的版本与该数组中任意一个精确匹配上，即符合规则。
   - `spec.fitler[index].versionedFilterCond.versionRegexp` 版本过滤的正则表达式。
   - `spec.filter[index].versionedFilterCond.versionConstraint` 版本验证条件，表达式格式请参考 [semver](https://github.com/Masterminds/semver#semver)
 
-  `versions, versionRegexp, VersionConstraint` 满足任一条件就会保留版本。
+  当 `operation=keep` 的时候，  `versions, versionRegexp, VersionConstraint` 满足任一条件就会保留版本。  
+  当 `operation=ignore` 的时候，  `versions, versionRegexp, VersionConstraint` 满足任一条件就会忽略版本。
+
+  `keepDeprecated` 在对最终留下来的版本进行过滤，是否保留废弃版本。
+
 - `spec.imageOverride`  非必需
   该字段是数组，定义了一系列仓库级别的镜像覆盖策略。
 

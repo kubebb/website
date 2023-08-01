@@ -72,7 +72,7 @@ const config = {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: '教程',
+            label: '文档',
           },
           /*{to: '/blog', label: 'Blog', position: 'left'},*/
           {
@@ -80,7 +80,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://github.com/kubebb/building-base',
+            href: 'https://github.com/kubebb/',
             label: 'GitHub',
             position: 'right',
           },
@@ -90,49 +90,54 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: '相关技术',
+            title: '快速开始',
             items: [
               {
-                label: '认证 OIDC - dex',
-                href: 'https://github.com/dexidp/dex',
+                label: '预先准备',
+                to: '/docs/quick-start/prerequisite',
               },
               {
-                label: '租户管理 - capsule',
-                href: 'https://github.com/clastix/capsule',
+                label: '安装内核',
+                to: '/docs/quick-start/core_quickstart',
               },
               {
-                label: '权限管理 - K8S RBAC',
-                href: 'https://kubernetes.io/zh-cn/docs/reference/access-authn-authz/rbac/',
-              },
-              {
-                label: '审计操作 - K8S Audit',
-                href: 'https://kubernetes.io/zh-cn/docs/tasks/debug/debug-cluster/audit/',
-              }, 
-            ],
-          },
-          {
-            title: '文档',
-            items: [
-              {
-                label: '教程',
-                to: '/docs/intro',
-              },
-              {
-                label: '内核',
-                to: '/docs/category/内核',
+                label: '安装底座',
+                to: '/docs/quick-start/buildingbase_quickstart',
               },
             ],
           },
           {
-            title: '代码',
+            title: '内核',
             items: [
               {
-                label: '基础底座',
-                href: 'https://github.com/kubebb/building-base',
+                label: '概念',
+                to: '/docs/category/概念',
               },
               {
-                label: '示例组件',
-                href: 'https://github.com/kubebb/addon-components',
+                label: '组件评级',
+                to: '/docs/core/rating',
+              },
+            ],
+          },
+          {
+            title: '底座服务',
+            items: [
+              {
+                label: '技术架构',
+                to: '/docs/building-base/tech-arch',
+              },
+            ],
+          },
+          {
+            title: '云梯开发平台',
+            items: [
+              {
+                label: '组件定义',
+                to: '/docs/lowcode-development/components',
+              },
+              {
+                label: '组件开发',
+                to: '/docs/category/组件开发',
               },
             ],
           },

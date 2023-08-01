@@ -48,7 +48,7 @@ sidebar_position: 1
 
 这一特点体现在**内核设计**的各个方面，我们支持:
 
-- [Charts](https://helm.sh/docs/chart_template_guide/getting_started/)作为组件, 并遵循[Charts]版本标准
+- [Charts](https://helm.sh/docs/chart_template_guide/getting_started/)作为组件
 - [组件仓库](./concepts/repository.md)完全适配**Helm类型**仓库
 - [组件部署](./concepts/componentplan.md)基本全面覆盖[Helm CLI](https://helm.sh/docs/helm/helm/)能力
 
@@ -59,7 +59,7 @@ sidebar_position: 1
 - 移植**Menu**资源类型
 - 移植**Route**配置
 
-从而通过**内核**串联**低代码开发平台**与**底座服务**。
+从而通过**内核**串联**云梯低代码开发平台**与**底座服务**。
 
 :::tip
 

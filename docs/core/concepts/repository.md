@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 ---
-# 仓库
+# 组件仓库CRD
 
 仓库是将 `chart repository` 映射为集群资源的一个概念。仓库定义了 `chart repository` 的 URL，认证信息等相关信息。仓库是组件部署，升级的基础。
 

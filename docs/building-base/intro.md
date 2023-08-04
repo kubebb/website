@@ -1,9 +1,9 @@
 ---
 sidebar_position: 1
 ---
-# 技术架构
+# 介绍
 
-## 相关技术组件
+## 技术组件
 
 - `u4a-component` 提供账号、认证、权限及审计管理功能，包含以下主要资料
   - [nginx ingress](https://docs.nginx.com/nginx-ingress-controller/)
@@ -12,10 +12,8 @@ sidebar_position: 1
   - [多租户基于 capsule 构建](https://github.com/clastix/capsule)
   - [oidc-proxy 基于 kube-oidc-proxy 构建](https://github.com/jetstack/kube-oidc-proxy)
 
-## 技术架构
-
 平台开发采取前后端分离，以 K8S 为核心的开发框架，遵循 K8S 的扩展机制及 API 规范，整体开发架构的基本逻辑如下图所示：
-![图 2](images/6b8d0cb645caee89c8df55940f5c5b3379940f8714667f8fb2dc780f3442b8f0.png)  
+![图 2](images/dev_arch.png)  
 
 1. 所有组件的开发、扩展的认证都通过统一认证中心进行认证
 2. 认证由微前端的主框架 DockApp 统一进行，其他微前端的扩展不需要单独支持同认证中心的处理
@@ -30,7 +28,7 @@ sidebar_position: 1
 - 从 BFF 层提供的 OpenAPI
 - 从 K8S 层提供的资源 API
 
-# 使用域名访问
+## 使用域名访问
 
 在代理服务器/负载均衡上，使用 nip.io 来支持 http/https 域名的绑定方式，便于默认统一采用域名进行配置。
 

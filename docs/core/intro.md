@@ -6,8 +6,6 @@ sidebar_position: 1
 
 [内核](https://github.com/kubebb/core)基于[kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)模式进行开发，提供完整的组件生命周期管理、组件订阅和自动化部署能力，并通过[tekton](https://tekton.dev/)扩展实现组件自动化评级和安装前校验等能力。
 
-## 背景
-
 ## 整体架构
 
 ![KubeBB Core架构图](https://raw.githubusercontent.com/kubebb/core/main/assets/arch.png)
@@ -16,6 +14,33 @@ sidebar_position: 1
 
 ### 声明式组件生命周期管理
 
+#### 组件生命周期
+
+组件的生命周期主要可以划分为三个阶段:
+
+![component_lifecycle](../images/component-lifecycle.drawio.png)
+
+##### 1. 研发阶段
+
+开发者通过**低码平台(optional)**完成组件的开发工作,根据不同的组件类型，选择不同的方式完成组件的打包，并将打包后的资源发布到**仓库服务**中。
+
+组件资源一般包含两类:
+
+- 镜像资源: 组件开发完成一般需要构建成一个镜像，并推送到镜像仓库
+- 安装包：组件安装部署时的各种资源配置信息（通常为**Helm charts）,**并推送到Charts包仓库
+
+镜像资源一般通过**公共镜像仓库(Dockerhub)或私有镜像仓库**管理，我们不做特殊处理。组件仓库服务主要用于存储**安装包(Charts)。**
+
+##### 2. 部署阶段
+
+系统管理员从**组件仓库服务**中手动查找存储的组件列表，获取可用的组件信息**(发布者、版本、安装配置等)，**并根据实际情况，完成组件配置并安装到系统中。安装完成后，需要手动去检查组件版本更新，并谨慎的完整组件的升级。
+
+##### 3. 使用阶段
+
+普通用户在组件安装到系统后，通过底座Kit提供的统一访问入口和统一用户认证来访问具体的组件服务。
+
+#### 声明式的优势
+
 **声明式**的组件生命周期管理有以下优势:
 
 - **可读性：** 更易于理解和阅读组件定义本身，因为它们表达了想要的结果，而不是实现的步骤。
@@ -23,13 +48,6 @@ sidebar_position: 1
 - **可重用性：**更容易重用组件，因为它们通常是独立于上下文的，可以在不同的环境中使用。
 - **可扩展性：**更易于扩展组件，因为它们通常是基于组件和模块的，可以简单地组合起来创建更复杂的系统。
 - **可靠性：**更可靠，因为它们通常是基于静态配置的，而不是基于运行时状态的。这意味着它们更少出现运行时错误和意外行为。
-
-为实现**声明式生命周期管理**，定义了四种CRD：
-
-- [Repository](./concepts/repository.md): 定义了组件仓库的访问信息、轮询策略和过滤选项，从而实现周期性地向仓库服务获取最新的组件列表信息。
-- [Component](./concepts/component.md): 记录了组件的基础描述、版本列表等信息
-- [ComponentPlan](./concepts/componentplan.md): 定义了组件安装部署的手动批准、组件引用、版本设置、类helm的配置覆盖策略，从而实现组件的可追踪部署、升级和回滚。
-- [Subscription](./concepts/subscription.md): 定义了用户订阅组件版本更新
 
 ### 多维度组件评级
 
@@ -54,38 +72,15 @@ sidebar_position: 1
 
 ### 扩展适配底座服务
 
+:::tip
+
+1. 低代码开发平台定义**Menus**、**Route**等底座相关资源，并打包到组件模版中
+2. 内核获取**底座自定义资源**后,自动解析、配置、创建对应资源
+:::
+
 底座服务支持通过**自定义菜单**和**路由**扩展平台服务，为支撑适配这一能力，我们做了以下努力：
 
 - 移植**Menu**资源类型
 - 移植**Route**配置
 
 从而通过**内核**串联**云梯低代码开发平台**与**底座服务**。
-
-:::tip
-
-1. 低代码开发平台定义**Menus**、**Route**等底座相关资源，并打包到组件模版中
-2. 内核获取**底座自定义资源**后,自动解析、配置、创建对应资源
-
-:::
-
-## 路线图
-
-### v0.1.0
-
-- 支持管理组件仓库 **Repository**
-  - 支持与 Helm 仓库兼容的 **Repository Server**
-  - **Watcher** 监视 **Repository**
-- 实现 **Component** 管理
-  - **Watcher** 实现 **Components** 的 CRUD 操作
-- 支持 **ComponentPlan** 和 **Subscription**
-  - 允许用户订阅 **Component** 的最新版本更改
-  - 使用与 Helm Chart 兼容的 **ComponentPlan** 计划组件部署
-
-### v0.2.0
-
-- 支持内核各控制器的**Events**记录
-- 适配 Kubebb 底座服务
-- 基于[Tekton Pipeline](https://tekton.dev/) 从 **安全性**、**可靠性** 和 **可用性** 三个维度对 **Component** 进行评级**Rating**
-- 基于[Tekton Pipeline](https://tekton.dev/)实现**ComponentPlan**组件部署前的预先校验**Check**
-- 组件仓库**Repository** 中启用 **auth** 和 **OCI**
-- 实现与低代码平台集成

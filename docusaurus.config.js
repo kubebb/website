@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Framework as a Building Block for Kubernetes',
-  tagline: '在 Kubernetes 上以搭积木的方式构建自己的服务门户',
+  tagline: '在Kubernetes 上以搭积木的方式构建自己的服务门户',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
@@ -107,8 +107,12 @@ const config = {
             ],
           },
           {
-            title: '内核',
+            title: '内核Kit',
             items: [
+              {
+                label: '介绍',
+                to: '/docs/core/intro',
+              },
               {
                 label: '概念',
                 to: '/docs/category/概念',
@@ -120,20 +124,28 @@ const config = {
             ],
           },
           {
-            title: '底座服务',
+            title: '底座Kit',
             items: [
               {
-                label: '技术架构',
-                to: '/docs/building-base/tech-arch',
+                label: '介绍',
+                to: '/docs/building-base/intro',
+              },
+              {
+                label: '自定义配置',
+                to: '/docs/category/自定义配置',
               },
             ],
           },
           {
-            title: '云梯开发平台',
+            title: '低码Kit',
             items: [
               {
-                label: '组件定义',
-                to: '/docs/lowcode-development/components',
+                label: '介绍',
+                to: '/docs/lowcode-development/intro',
+              },
+              {
+                label: '开发模式',
+                to: '/docs/lowcode-development/development_pattern',
               },
               {
                 label: '组件开发',
@@ -151,7 +163,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Kubebb 官网，基于 Docusaurus 构建.`,
+        copyright: `Copyright © ${new Date().getFullYear()} KubeBB`,
       },
       prism: {
         theme: lightCodeTheme,

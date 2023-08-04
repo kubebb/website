@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
 ---
-# 组件
+# 组件CRD
 
 组件是将 `chart package` 映射为集群资源的一个概念，组件定义了 `chart package` 的基础描述信息，版本信息等。组件一般由仓库创建出来，无需手动创建。
 

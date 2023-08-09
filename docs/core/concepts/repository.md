@@ -114,6 +114,9 @@ spec:
     - `spec.imageOverride[].pathOverride.path` 旧的镜像仓库路径，比如镜像地址 `docker.io/library/nginx:latest` 中的 path 为 `library`
     - `spec.imageOverride[].pathOverride.newPath` 要将 `path` 替换后的镜像仓库新路径。
 
+- `spec.keywordLenLimit` 非必要
+   每个 chart 包都可以定义一个关键词列表，供 helm 搜索使用。该字段是用来限制这个关键词列表的长度，避免关键词过多导致在产品界面不好展示。如果不配置，不会做任何限制。
+
 ## 工作原理
 
 仓库以 Kubernetes Operator 方式实现。周期性的获取 `chart repository` 的数据，对集群中组件更新或者创建，**一般不会删除组件，而是将在 `chart repository` 中不存在的组件标记为废弃**。

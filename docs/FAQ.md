@@ -5,9 +5,11 @@ sidebar_position: 8
 
 # 常见问题
 
-## BuildingBase部署
+## BuildingBase相关
 
-### 1. 租户管理控制器probe liveness校验失败，导致无法启动
+### 部署问题
+
+#### 1. 租户管理控制器probe liveness校验失败，导致无法启动
 
 - 环境
   - Azure VM (Ubuntu 22.04)

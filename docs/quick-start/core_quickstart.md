@@ -34,7 +34,20 @@ kubectl create namespace kubebb-system
 3. 安装
 
 ```shell
-helm install --wait -nkubebb-system kubebb-core kubebb/kubebb-core
+helm install -nkubebb-system kubebb-core kubebb/kubebb-core
+```
+
+4. 查看安装状态
+
+```shell
+kubectl get pods -nkubebb-system 
+```
+
+如果一切正常，输入如下:
+
+```shell
+NAME                           READY   STATUS    RESTARTS   AGE
+kubebb-core-6bd7c5f679-742mq   1/1     Running   0          21h
 ```
 
 ### 源代码安装
@@ -73,6 +86,19 @@ make install
 
 ```shell
 make deploy IMG=kubebb/kubebb-core:local
+```
+
+5. 查看安装状态
+
+```shell
+kubectl get pods -nkubebb-system 
+```
+
+如果一切正常，输入如下:
+
+```shell
+NAME                           READY   STATUS    RESTARTS   AGE
+kubebb-core-6bd7c5f679-742mq   1/1     Running   0          21h
 ```
 
 ## 快速体验

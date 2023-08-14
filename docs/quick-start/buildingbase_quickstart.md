@@ -100,7 +100,7 @@ metadata:
 spec:
   approved: true
   name: u4a-component
-  version: 0.1.3
+  version: 0.1.5
   wait: true
   override:
     valuesFrom:

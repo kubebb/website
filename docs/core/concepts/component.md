@@ -1,88 +1,11 @@
 ---
 sidebar_position: 2
 ---
-# 组件CRD
+# 组件
 
 组件是将 `chart package` 映射为集群资源的一个概念，组件定义了 `chart package` 的基础描述信息，版本信息等。组件一般由仓库创建出来，无需手动创建。
 
-<!-- 介绍基本内容 -->
-
-## 使用
-
-下面是手动创建一个组件示例：
-
-1. 准备组件 component.yaml
-
-```yaml
-apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-kind: Component
-metadata:
-  labels:
-    kubebb.component.repository: repository-bitnami-sample
-  name: repository-bitnami-sample.wordpress
-  namespace: kubebb-system
-  ownerReferences:
-    - apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-      kind: Repository
-      name: repository-bitnami-sample
-      uid: a5b8b73d-47a5-40e1-9839-7aebf8a25618
-spec: {}
-```
-
-```shell
-kubectl apply -f component.yaml
-```
-
-2. 准备更新组件 status.yaml
-
-```yaml
-status:
-  description: WordPress is the world's most popular blogging and content management
-    platform. Powerful yet simple, everyone from students to global corporations use
-    it to build beautiful, functional websites.
-  home: https://bitnami.com
-  icon: https://bitnami.com/assets/stacks/wordpress/img/wordpress-stack-220x234.png
-  keywords:
-    - application
-    - blog:
-    - cms
-    - http
-    - php
-    - web
-    - wordpress
-  maintainers:
-    - name: VMware, Inc.
-      url: https://github.com/bitnami/charts
-    - name: Bitnami
-      url: https://github.com/bitnami/charts
-  name: wordpress
-  repository:
-    apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-    kind: Repository
-    name: repository-bitnami-sample
-    namespace: kubebb-system
-    uid: a5b8b73d-47a5-40e1-9839-7aebf8a25618
-  sources:
-    - https://github.com/bitnami/charts/tree/main/bitnami/wordpress
-  versions:
-    - appVersion: 6.2.2
-      createdAt: "2023-06-06T19:08:58Z"
-      deprecated: false
-      digest: 47096ed3f0a385e5830e90c75f443b7be107d7fa6df6aa869e7deb60b6cb6f8f
-      updatedAt: "2023-06-08T05:34:00Z"
-      version: 16.1.13
-    - appVersion: 6.2.2
-      createdAt: "2023-06-05T12:52:45Z"
-      deprecated: false
-      digest: 2005819fa8a08dea1f73585bcc4a37d83d3ef4f787c3927b5f51d2b5ae826dcb
-      updatedAt: "2023-06-08T05:34:00Z"
-```
-
-```shell
-kubectl -nkubebb-system patch component.core.kubebb.k8s.com.cn repository-bitnami-sample.wordpress --type=merge --subresource status --patch-file status.yaml
-```
-
-## CRD 定义说明
+## 定义
 
 CRD 的代码定义位于 [ComponentTypes](https://github.com/kubebb/core/blob/main/api/v1alpha1/component_types.go)。组件的信息都定在 `status` 中， 接下来会详细介绍每个字段的含义及其作用。
 
@@ -127,4 +50,7 @@ CRD 的代码定义位于 [ComponentTypes](https://github.com/kubebb/core/blob/m
 
 ## 工作原理
 
-组件也实现为 Kubernetes Operator，主要功能就是当组件创建，更新给每个组件添加 label `kubebb.component.repository=<repository-name>`，方便搜索。
+仓库`Watcher`同步仓库服务的组件列表，并`创建/更新`组件。因此:
+
+- `组件`不建议主动创建，应该都通过组件仓库对应的`Watcher`自动同步获得
+- 同属一个仓库的组件可通过`kubebb.component.repository=<repository-name>`检索

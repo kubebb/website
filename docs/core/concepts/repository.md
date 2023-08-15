@@ -1,47 +1,15 @@
 ---
 sidebar_position: 1
 ---
-# 组件仓库CRD
+# 组件仓库
 
 仓库是将 `chart repository` 映射为集群资源的一个概念。仓库定义了 `chart repository` 的 URL，认证信息等相关信息。仓库是组件部署，升级的基础。
 
-<!-- 介绍基本内容 -->
+组件仓库的工作流程如下:
 
-## 使用
+![repository_flow](https://raw.githubusercontent.com/kubebb/core/main/assets/repository_flow.drawio.png)
 
-下面是一个仓库示例：
-
-```yaml
-apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-kind: Repository
-metadata:
-  name: repository-bitnami-special-version
-  namespace: kubebb-system
-spec:
-  url: https://charts.bitnami.com/bitnami
-  pullStategy:
-    intervalSeconds: 120
-    retry: 5
-  filter:
-  - name: wordpress
-    operation: keep
-    versionedFilterCond:
-      versions:
-      - 16.1.14
-      - 16.1.13
-  imageOverride:
-  - registry: docker.io
-    newRegistry: 192.168.1.1
-    pathOverride:
-      path: library
-      newPath: system-container
-```
-
-上述仓库定义了数据来源是 `https://charts.bitnami.com/bitnami` ，数据获取策略是，每隔 120s 获取一次，如果发生错误最多尝试 5 次。
-对 `wordpress` 的版本定义了多虑条件，精确匹配 `16.1.14`, `16.1.13` 两个版本。
-对仓库中所有来自 `docker.io` 的镜像，替换为 `192.168.1.1` ，并将镜像路径为 `library` 的镜像替换为 `system-container` ，比如仓库中有镜像 `docker.io/library/nginx:v1.2.3` 会替换为 `192.168.1.1/system-container/nginx:v1.2.3` 。
-
-## CRD 定义说明
+## 定义
 
 CRD 的代码定义位于 [RepositoryTypes](https://github.com/kubebb/core/blob/main/api/v1alpha1/repository_types.go)。接下来会详细介绍每个字段的含义及其作用。
 
@@ -116,6 +84,40 @@ spec:
 
 - `spec.keywordLenLimit` 非必要
    每个 chart 包都可以定义一个关键词列表，供 helm 搜索使用。该字段是用来限制这个关键词列表的长度，避免关键词过多导致在产品界面不好展示。如果不配置，不会做任何限制。
+
+## 使用
+
+下面是一个仓库示例：
+
+```yaml
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Repository
+metadata:
+  name: repository-bitnami-special-version
+  namespace: kubebb-system
+spec:
+  url: https://charts.bitnami.com/bitnami
+  pullStategy:
+    intervalSeconds: 120
+    retry: 5
+  filter:
+  - name: wordpress
+    operation: keep
+    versionedFilterCond:
+      versions:
+      - 16.1.14
+      - 16.1.13
+  imageOverride:
+  - registry: docker.io
+    newRegistry: 192.168.1.1
+    pathOverride:
+      path: library
+      newPath: system-container
+```
+
+上述仓库定义了数据来源是 `https://charts.bitnami.com/bitnami` ，数据获取策略是，每隔 120s 获取一次，如果发生错误最多尝试 5 次。
+对 `wordpress` 的版本定义了多虑条件，精确匹配 `16.1.14`, `16.1.13` 两个版本。
+对仓库中所有来自 `docker.io` 的镜像，替换为 `192.168.1.1` ，并将镜像路径为 `library` 的镜像替换为 `system-container` ，比如仓库中有镜像 `docker.io/library/nginx:v1.2.3` 会替换为 `192.168.1.1/system-container/nginx:v1.2.3` 。
 
 ## 工作原理
 

@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# 组件部署CRD
+# 组件部署
 
 ComponentPlan 会安装一个组件到集群，类似执行一次 `helm install/upgrade` 操作，只不过将 `helm install/upgrade` 命令中的参数固化到 ComponentPlan 的 spec
 字段中，将涉及到的 docker 镜像以及安装后集群对象和现有对象的 diff 显示在 status字段中，并且可以设置失败后自动重试的次数。

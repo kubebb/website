@@ -18,7 +18,7 @@ sidebar_position: 1
 
 组件的生命周期主要可以划分为三个阶段:
 
-![component_lifecycle](../images/component-lifecycle.drawio.png)
+![component_lifecycle](https://raw.githubusercontent.com/kubebb/core/main/assets/component-lifecycle.drawio.png)
 
 ##### 1. 研发阶段
 

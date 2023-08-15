@@ -18,7 +18,7 @@ sidebar_position: 4
 
 ## 核心流程
 
-![rating_workflow](./images/rating_flow.drawio.png)
+![rating_workflow](https://raw.githubusercontent.com/kubebb/core/main/assets/rating_flow.drawio.png)
 
 ## 任务列表
 

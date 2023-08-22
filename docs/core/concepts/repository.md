@@ -66,11 +66,10 @@ spec:
   - `spec.fitler[index].versionedFilterCond.versionRegexp` 版本过滤的正则表达式。
   - `spec.filter[index].versionedFilterCond.versionConstraint` 版本验证条件，表达式格式请参考 [semver](https://github.com/Masterminds/semver#semver)
 
-  当 `operation=keep` 的时候，  `versions, versionRegexp, VersionConstraint` 满足任一条件就会保留版本。  
+  当 `operation=keep` 的时候，  `versions, versionRegexp, VersionConstraint` 满足任一条件就会保留版本。
   当 `operation=ignore` 的时候，  `versions, versionRegexp, VersionConstraint` 满足任一条件就会忽略版本。
 
   `keepDeprecated` 在对最终留下来的版本进行过滤，是否保留废弃版本。
-
 - `spec.imageOverride`  非必需
   该字段是数组，定义了一系列仓库级别的镜像覆盖策略。
 
@@ -78,12 +77,11 @@ spec:
 
   - `spec.imageOverride[].registry` 该镜像仓库域名地址，可以包含端口，例如：`docker.io`，`192.168.1.1:5000`
   - `spec.imageOverride[].newRegistry` 要将 `registry` 替换后的镜像仓库域名地址，可以包含端口。
-  - `spec.imageOverride[].pathOverride` 非必需
+  - `spec.imageOverride[].pathOverride` 非必需，数组。
     - `spec.imageOverride[].pathOverride.path` 旧的镜像仓库路径，比如镜像地址 `docker.io/library/nginx:latest` 中的 path 为 `library`
-    - `spec.imageOverride[].pathOverride.newPath` 要将 `path` 替换后的镜像仓库新路径。
-
+    - `spec.imageOverride[].pathOverride.newPath` 要将 `path` 替换后的镜像仓库新路径，可以为空。
 - `spec.keywordLenLimit` 非必要
-   每个 chart 包都可以定义一个关键词列表，供 helm 搜索使用。该字段是用来限制这个关键词列表的长度，避免关键词过多导致在产品界面不好展示。如果不配置，不会做任何限制。
+  每个 chart 包都可以定义一个关键词列表，供 helm 搜索使用。该字段是用来限制这个关键词列表的长度，避免关键词过多导致在产品界面不好展示。如果不配置，不会做任何限制。
 
 ## 使用
 

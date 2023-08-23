@@ -1,11 +1,10 @@
 ---
 sidebar_position: 3
 ---
-
 # 组件部署
 
 ComponentPlan 会安装一个组件到集群，类似执行一次 `helm install/upgrade` 操作，只不过将 `helm install/upgrade` 命令中的参数固化到 ComponentPlan 的 spec
-字段中，将涉及到的 docker 镜像以及安装后集群对象和现有对象的 diff 显示在 status字段中，并且可以设置失败后自动重试的次数。
+字段中，将涉及到的 docker 镜像以及安装后集群对象和现有对象的 diff 显示在 status 字段中，并且可以设置失败后自动重试的次数。
 
 ## 使用
 
@@ -113,7 +112,7 @@ ComponentPlan 的可选配置匹配了 helm install / upgrade / uninstall 的可
 2. `--dry-run` 参数不支持，不需要模拟，模拟运行的结果会出现在 ComponentPlan 的 status 字段中。
 3. `--replace` 参数不支持，helm 标记该参数不应该用于生产环境。
 4. `--render-subchart-notes` 参数不支持，我们不展示 notes 信息。
-5. `--devel` 参数不支持，如果需要使用`devel`版本，`spec.version` 字段指定 `>0.0.0-0` 即可。
+5. `--devel` 参数不支持，如果需要使用 `devel` 版本，`spec.version` 字段指定 `>0.0.0-0` 即可。
 6. `--nameTemplate` 和 `--generateName` 参数不支持，因为这两个字段在多次运行过程中可能会生成不确定的结果，我们使用 `spec.name` 来生成固定的名称。
 7. `--reset-values` 和 `--reuse-values` 参数不支持，我们使用 `spec.override.values` 和 `spec.override.valuesFrom` 来重写配置。
 8. 其他认证参数比如 `--username`，需要在 Repository 中指定。
@@ -209,7 +208,7 @@ ComponentPlan 的可选配置匹配了 helm install / upgrade / uninstall 的可
 
     - `spec.override.images[].name`
 
-      去除 `tag` 后的原始镜像名称
+      原始镜像名称，`tag` 可选，如果包含 `tag`，则匹配精确到 `tag` 一致才替换，比如，如果该项为 `docker.io/bitnami/nginx:v1`，那么只匹配 tag 为 `v1` 的 nginx 镜像，如果有 `docker.io/bitnami/nginx:v2` 不会被替换。
     - `spec.override.images[].newName`
 
       替代原始镜像名称的名称
@@ -259,6 +258,7 @@ status:
 - `status.conditions`
 
   数组，ComponentPlan 的状态
+
   - `status.conditions[].lastTransitionTime`
 
     上次从一种状态转换到另一种状态时的时间戳
@@ -273,9 +273,9 @@ status:
     表明该状况是否适用，可能的取值有 `True"`、`False` 或 `Unknown`
   - `status.conditions[].type`
 
-      状况的名称
+    状况的名称
 
-      可能包含以下状态：
+    可能包含以下状态：
 
     - `Approved`
 
@@ -286,13 +286,12 @@ status:
     - `Succeeded`
 
       用户期待的操作已经全部完成
-
 - `status.images`
 
   该 ComponentPlan 会引入的镜像列表
 - `status.installedRevision`
 
-  该 ComponentPlan 安装的helm release revision版本。
+  该 ComponentPlan 安装的 helm release revision 版本。
 - `status.latest`
 
   helm release 的最新版本是否是该 ComponentPlan 安装的。支持多个 ComponentPlan 按部署时间安装/升级同一个 helm release。
@@ -337,8 +336,7 @@ status:
 3. 单个 ComponentPlan 的镜像替换 （即 `spec.override.images`
    字段）的规则遵循 [kustomize:ImageTagTransformer](https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#_imagetagtransformer_)
    规范，代码实现也是直接调用了 kustomize 的这部分代码，降低了用户学习成本，保证了代码的兼容性和有效性。
-4. 单个 ComponentPlan 的镜像替换和整个 Repository 的镜像替换，都是通过 [Helm:post-rendering](https://helm.sh/docs/topics/advanced/#post-rendering)
-   技术实现的。
+4. 单个 ComponentPlan 的镜像替换和整个 Repository 的镜像替换，都是通过 [Helm:post-rendering](https://helm.sh/docs/topics/advanced/#post-rendering) 技术实现的。
 
 ### 镜像覆盖策略
 

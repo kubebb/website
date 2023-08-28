@@ -11,12 +11,18 @@ CRD 的代码定义位于 [ComponentTypes](https://github.com/kubebb/core/blob/m
 
 - `status.name`
 
-  该字段用来保存 `chart package` 的名字。
+  该字段用来保存 `chart package` 的名字,必须符合kubernetes的命名规范。
+
+- `status.displayName`
+
+  该字段用来保存 `chart package` 的展示名，该字段内容为组件**最新版本**的注解`core.kubebb.k8s.com.cn/displayname`,允许为空。
+
 - `status.versions`
 
   该字段是数组，用来保存 `chart package` 的多个版本。每个版本包含的信息如下
 
   - `status.versions[index].appVersion` 定义 `chart packge` 里面的应用的版本信息。
+  - `status.versions[index].annotations` 定义该版本的注解信息,如组件的展示名。
   - `status.versions[index].createdAt` 创建时间
   - `status.versions[index].updatedAt` 更新时间
   - `status.versions[index].deprecated` 当前版本是否废弃

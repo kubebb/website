@@ -14,7 +14,14 @@ sidebar_position: 4
 
 - 通过[**Tekton**](https://github.com/kubebb/core/tree/main/pipeline/rating)从**安全性**、**可靠性**、**可用性**三个维度定义多种任务来完成自动化组件测试
 - 定义**CRD Rating**及其控制器,实时监听**Tekton**资源,收集测试数据
-- 通过**Human Defined**和**AI Defined**两种模式来制定组件评估规则，并基于测试数据实时更新组件等级
+- 通过**KubeAGI/arcadia**实现AI制定组件评估规则，并基于测试数据实时更新组件等级
+
+:::tip
+
+- 参考[启用组件评级](./userguide/enablerating)快速使用Rating
+- 参考[组件评级概念](./concepts/rating)了解Rating的实现原理
+
+:::
 
 ## 核心流程
 

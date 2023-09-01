@@ -34,6 +34,13 @@ sidebar_position: 6
 
 `PipelineRun` 允许你在集群上实例化和执行管道。管道按照所需的执行顺序指定一个或多个任务。`PipelineRun` 会按照指定的顺序执行管道中的任务，直到所有任务都成功执行或出现故障。
 
+### [Arcadia云原生AI](https://github.com/kubeagi/arcadia)
+
+主要用到2个CRD:
+
+- [LLM](https://github.com/kubeagi/arcadia/blob/main/api/v1alpha1/llm_types.go),包含AI大模型服务的访问配置信息
+- [Prompt](https://github.com/kubeagi/arcadia/blob/main/api/v1alpha1/prompt_types.go),包含针对LLM服务的请求提示词和控制参数
+
 ## 定义
 
 CRD 的代码定义位于 [RatingTypes](https://github.com/kubebb/core/blob/main/api/v1alpha1/rating_types.go)。接下来会详细介绍每个字段的含义及其作用。
@@ -46,6 +53,7 @@ spec:
   foo:
     bar: xx
 ```
+
 :::
 
 - `spec.componentName`
@@ -53,7 +61,7 @@ spec:
   该字段定义了关联的 Component，是**必填字段**。
 
 - `spec.pipelineParams`
- 
+
    该字段是数组，每一项都包含 `Pipeline` 的名字及其需要的参数，该字段是**必填字段**。数组的每一项介绍
 
   - `spec.pipelineParams[index].pipelineName` 定义了 `Pipeline` 的名字，该字段是**必填字段**。
@@ -76,11 +84,11 @@ spec:
 名为 `kubebb-system.kubebb-rating`，里面仅包含了操作 configmap 资源的权限。
 `ClusterRole` 定义了所有的 `Task` 在运行时需要的权限，有新的权限需求，直接更新这个 `ClusterRole` 即可。
 
-2. ServiceAccount 
+2. ServiceAccount
 
 名为 `kubebb-system.kubebb-rating`。这个 serviceaccount 会在每个 `Repository` 的 namespace 下都创建一个。
 
-3. ClusterRoleBinding 
+3. ClusterRoleBinding
 
 名为 `kubebb-system.kubebb-rating`，将 serviceaccount `kubebb-system.kubebb-rating` 与 clusterrole `kubebb-system.kubebb-rating` 绑定。
 
@@ -112,29 +120,6 @@ kubebb-rback       4m25s
 支持用户自己定义 `Task` 和 `Pipeline`, 但是需要讲这些资源放到与 operator 相同的 **namespace** 下。
 `ClusterRole`, `ClusterRoleBinding`, `ServiceAccount` 是给 pipelinerun 在执行 `Task` 用的，避免 `Task` 因为权限不足而失败。
 
-
-### 启用 Rating
-
-通过 `helm` 安装 operator 的时候，默认是不开启 `Rating`。通过修改 `deployment.rating_enable=true` 开启 `Rating` 的功能。
-
-如果不是通过 `helm` 部署，而且想要启用这个功能，需要设置下面4个环境变量
-
-- `RATING_ENABLE=true`
-
-设置这个环境变量，operator 会执行 `Rating` 相关的逻辑。
-
-- `RATING_SERVICEACCOUNT`
-
-设置一个 serviceaccount 的名字，每个 `Repository` 创建的时候都会在相应的 namespace 下创建该 serviceaccount，避免后续 `Task` 的 pod 找不到 serviceaccount。
-
-- `RATING_CLUSTERROLE`
-
-设置一个 clusterrole 的名字，并且需要创建该资源，配置一些必要的权限，这个权限取决于 `Task`。
-
-- `RATING_CLUSTERROLEBINDING`
-
-设置一个 clusterrolebinding 的名字，并且需要创建该资源，同时与 clusterrole 关联。
-
 ### 核心逻辑
 
 1. 当 `Rating` 创建时
@@ -150,7 +135,6 @@ kubebb-rback       4m25s
 3. 当 `Rating` 删除时
 
 `Rating` 被删除，他所创建的 `PipelineRun` 同样会被删除。
-
 
 ## 使用
 

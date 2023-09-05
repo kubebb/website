@@ -117,6 +117,45 @@ spec:
 对 `wordpress` 的版本定义了多虑条件，精确匹配 `16.1.14`, `16.1.13` 两个版本。
 对仓库中所有来自 `docker.io` 的镜像，替换为 `192.168.1.1` ，并将镜像路径为 `library` 的镜像替换为 `system-container` ，比如仓库中有镜像 `docker.io/library/nginx:v1.2.3` 会替换为 `192.168.1.1/system-container/nginx:v1.2.3` 。
 
+### OCI 仓库的额外说明
+
+#### 支持地址
+
+仓库支持使用 OCI 镜像仓库的地址，目前支持如下几种方式：
+
+- 原生 [harbor](https://goharbor.io/) 2.x 以上版本:
+  - 项目纬度，将会尝试获取这个项目下所有镜像的所有 tag，例如：`oci://demo.goharbor.io/helm-test` (`demo.goharbor.io` 是 harbor 的在线测试服务器，该服务器数据每 2 天清空一次，详情见 [docker 文档的相关说明](https://goharbor.io/docs/1.10/install-config/demo-server/))
+  - 镜像维度，将会尝试获取这个镜像的所有 tag，例如：`oci://demo.goharbor.io/helm-test/nginx`
+- [dockerhub](https://hub.docker.com/):
+  - 项目纬度，将会尝试获取这个项目下所有镜像的所有 tag，例如：`oci://registry-1.docker.io/bitnamicharts`
+  - 镜像维度，将会尝试获取这个镜像的所有 tag，例如：`oci://registry-1.docker.io/bitnamicharts/wordpress`
+- [github package](https://github.com/features/packages)
+  - [github package](https://github.com/features/packages) 组织维度:
+    - 整个组织的地址，将会尝试获取该组织下所有镜像的所有 tag，例如：`oci://ghcr.io/oci-helm-example`
+    - 组织中单独上传的镜像地址，将会尝试获取该组织下所有镜像的所有 tag，例如：`oci://ghcr.io/oci-helm-example/redis`
+    - 组织中的仓库地址，将会尝试获取该仓库下所有镜像的所有 tag，例如：`oci://ghcr.io/oci-helm-example/helm-oci-example`
+    - 组织中某个仓库的镜像地址，将会尝试获取该镜像的所有 tag，例如：`oci://ghcr.io/oci-helm-example/helm-oci-example/nginx`
+  - [github package](https://github.com/features/packages) 个人维度:
+    - 该用户的地址，将会尝试获取该用户名下所有镜像的所有 tag，例如：`oci://ghcr.io/abirdcfly`
+    - 用户单独上传的镜像地址，将会尝试获取该用户名下所有镜像的所有 tag，例如：`oci://ghcr.io/abirdcfly/redis`
+    - 用户的仓库地址，将会尝试获取该仓库下所有镜像的所有 tag，例如：`oci://ghcr.io/abirdcfly/helm-oci-example`
+    - 用户某个仓库的镜像地址，将会尝试获取该镜像的所有 tag，例如：`oci://ghcr.io/abirdcfly/helm-oci-example/nginx`
+
+#### 限制
+
+1. 限于 [github package API 的限制](https://docs.github.com/zh/rest/packages/packages?apiVersion=2022-11-28#%E5%85%B3%E4%BA%8E-github-packages)
+
+> 若要使用 REST API 管理 GitHub Packages，必须使用 personal access token (classic) 进行身份验证。
+> 要访问包元数据，令牌必须包含 read:packages 范围。
+
+在使用 github package 作为 OCI 的存储地址时，需要提供一个 personal access token (classic) ，用户可以使用环境变量 `GITHUB_PAT_TOKEN` 来覆盖系统默认提供的 token。
+
+2. 限于 原生 [harbor](https://goharbor.io/) 和 [github package](https://github.com/features/packages) 并没有在 API 返回详情中写明镜像的类型，所以从 API 返回结果中无法区分该 OCI 镜像是否存储的是 Helm 包还是普通 docker 镜像。因此将会一并尝试，可能会在日志或资源状态中看到错误。我们建议用户单独将某个 OCI 仓库用作 Helm 包存储。
+
+3. 目前还不支持私有仓库。将在后续版本支持。
+
+4. 因为工作原理不同，chartmuseum 类型的仓库会提供索引文件，而 OCI 仓库只能通过拉取具体压缩包并解析内容，OCI 仓库的获取要慢于 chartmuseum 仓库，并且各个存储地址都有自己的 API 请求速率限制。默认将 OCI 仓库的解析的并发数设置为 5，可以通过环境变量 `OCI_PULL_WORKER` 覆盖该设置，数字越大，解析并发数越多，也越可能遇到 `429 Too Many Requests` 错误。
+
 ## 工作原理
 
 仓库以 Kubernetes Operator 方式实现。周期性的获取 `chart repository` 的数据，对集群中组件更新或者创建，**一般不会删除组件，而是将在 `chart repository` 中不存在的组件标记为废弃**。

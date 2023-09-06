@@ -20,13 +20,13 @@ sidebar_position: 2
 ### 镜像
 
 - kindest/node:v1.24.4 (创建k8s集群，kind要是用的镜像)
-- kubebb/core:v0.1.2 (kubebb-core 的镜像)
+- kubebb/core:v0.1.4 (kubebb-core 的镜像)
 - alpine:3.15 (用来测试registry是否正常)
 - ghcr.io/helm/chartmuseum:v0.16.0
 
 ### 代码仓库
 
-- [kubebb/components](https://github.com/kubebb/core) (这里包含了kubebb的基础chart包, 因为是私有部署，所以需要先clone下来)
+- [kubebb/components](https://github.com/kubebb/components) (这里包含了kubebb的基础chart包, 因为是私有部署，所以需要先clone下来)
 
 ## 2. 创建集群
 
@@ -244,11 +244,11 @@ hello
 
 ## 3.安装 kubebb-core
 
-1. 将镜像 `kubebb/core:v0.1.2` 推到你的镜像 registry。
+1. 将镜像 `kubebb/core:v0.1.4` 推到你的镜像 registry。
 
 ```shell
-docker tag kubebb/core:v0.1.2 localhost:5001/core:v0.1.2
-docker push localhost:5001/core:v0.1.2
+docker tag kubebb/core:v0.1.4 localhost:5001/core:v0.1.4
+docker push localhost:5001/core:v0.1.4
 ```
 
 2. 安装
@@ -256,7 +256,7 @@ docker push localhost:5001/core:v0.1.2
 ```shell
 kubectl create ns kubebb-system
 cd components/charts/kubebb-core
-helm  -nkubebb-system install kubebb --set deployment.image=localhost:5001/core:v0.1.2
+helm  -nkubebb-system install kubebb --set deployment.image=localhost:5001/core:v0.1.4
 ```
 
 3. 执行结果

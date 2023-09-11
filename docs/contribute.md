@@ -1,5 +1,5 @@
 ---
-sidebar_position: 9
+sidebar_position: 13
 title: 贡献指南
 sidebar_label: 贡献指南
 ---

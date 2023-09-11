@@ -84,7 +84,7 @@ spec:
 使用 `kubectl apply -f` 即可将菜单项部署到环境中，如下图所示：
 ![图 1](images/4a52ae49bf01baee581357a57038c5792dab1fe153770917e42a5888a7ebebdc.png)  
 
-* 详细介绍参考 [自定义菜单](../configuration/customize-menu.md)
+* 详细介绍参考 [自定义菜单](../building-base/configuration/customize-menu.md)
 
 3. 多语言 & 白天/黑夜模式
 

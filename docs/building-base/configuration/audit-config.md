@@ -5,7 +5,7 @@ sidebar_position: 3
 # 配置审计能力
 
 :::tip
-注意，审计功能依赖对审计日志的采集功能，需要在集群设置中配置日志服务 ElasticSearch 的地址，日志服务的配置参考[日志组件](../component-market/logging.md)
+注意，审计功能依赖对审计日志的采集功能，需要在集群设置中配置日志服务 ElasticSearch 的地址，日志服务的配置参考[日志组件](../../component-market/logging.md)
 :::
 
 1、编辑 audit-policy.yaml 文件对审计进行配置，```kubectl edit cm audit-policy-conf -n u4a-system```

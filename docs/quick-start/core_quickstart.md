@@ -128,3 +128,65 @@ my-minio-0   1/1     Running   0          42h
 my-minio-1   1/1     Running   0          42h
 my-minio-2   1/1     Running   0          42h
 ```
+
+## 部署一个私有仓库
+
+1. 在官方仓库中部署chartmuseum
+
+```shell
+kubectl apply -f https://raw.githubusercontent.com/kubebb/components/main/examples/chartmuseum/componentplan.yaml
+```
+
+2. 添加仓库
+
+```yaml
+# repository_chartmuseum.yaml
+apiVersion: core.kubebb.k8s.com.cn/v1alpha1
+kind: Repository
+metadata:
+  name: chartmuseum
+  namespace: kubebb-system
+spec:
+  url: http://chartmuseum.kubebb-system.svc.cluster.local:8080
+  pullStategy:
+    intervalSeconds: 120
+    retry: 5
+```
+
+创建仓库
+
+```shell
+kubectl apply -f repository_chartmuseum.yaml 
+```
+
+执行结果
+
+```shell
+kubectl get repository -nkubebb-system
+NAME          AGE
+chartmuseum   4m41s
+kubebb        15h
+```
+
+端口暴露
+
+```shell
+kubectl port-forward service/chartmuseum 8080:8080 -nkubebb-system
+```
+
+上传自定义chart
+
+```shell
+helm create mychart
+cd mychart
+helm package .
+curl --data-binary "@mychart-0.1.0.tgz" http://localhost:8080/api/charts
+```
+
+从私有仓库中查看
+
+```
+kubectl get component -l kubebb.component.repository=chartmuseum -nkubebb-system
+NAME                  AGE
+chartmuseum.mychart   4m27s
+```

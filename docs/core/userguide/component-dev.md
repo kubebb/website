@@ -31,7 +31,7 @@ Kubebb的组件安装包采用`Helm`模式，遵循Helm charts开发规则。除
 ```yaml
 annotations:
   core.kubebb.k8s.com.cn/displayname: "内核"
-  core.kubebb.k8s.com.cn/restrict-tenants: "system-tenant"
+  core.kubebb.k8s.com.cn/restricted-tenants: "system-tenant"
   core.kubebb.k8s.com.cn/restricted-namespaces: "msa-system"
 ```
 

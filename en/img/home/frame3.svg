@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="312 -320 1220 670" style="enable-background:new 312 -320 1220 670;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#EDF0FD;}
+	.st2{fill:#4461EB;}
+	.st3{font-family:'PingFang-SC-Medium';}
+	.st4{font-size:20px;}
+	.st5{opacity:0.93;}
+	.st6{font-family:'PingFang-SC-Bold';}
+	.st7{font-size:24px;}
+	.st8{opacity:0.8;}
+	.st9{opacity:0.7;}
+</style>
+<rect x="312" y="-320" class="st0" width="1220" height="670"/>
+<g>
+	<g>
+		<g>
+			<rect x="332" y="-230.3" class="st1" width="1180" height="210"/>
+		</g>
+	</g>
+	<g>
+		<g>
+			<rect x="332" y="0.2" class="st1" width="1180" height="260"/>
+		</g>
+	</g>
+	<g>
+		<rect x="352.5" y="50.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M571,50.9v38H353v-38L571,50.9 M572,49.9H352v40h220V49.9L572,49.9z"/>
+	</g>
+	<g id="XMLID_218_">
+		<text transform="matrix(1 0 0 1 421.9635 77.0681)" class="st2 st3 st4">用户管理</text>
+	</g>
+	<g>
+		<rect x="582.5" y="50.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M801,50.9v38H583v-38L801,50.9 M802,49.9H582v40h220V49.9L802,49.9z"/>
+	</g>
+	<g id="XMLID_6_">
+		<text transform="matrix(1 0 0 1 661.964 75.8802)" class="st2 st3 st4">组管理</text>
+	</g>
+	<g>
+		<rect x="812.5" y="50.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1031,50.9v38H813v-38L1031,50.9 M1032,49.9H812v40h220V49.9L1032,49.9z"/>
+	</g>
+	<g>
+		<rect x="812.5" y="100.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1031,100.9v38H813v-38H1031 M1032,99.9H812v40h220V99.9L1032,99.9z"/>
+	</g>
+	<g id="XMLID_1_">
+		<text transform="matrix(1 0 0 1 881.9639 75.8802)" class="st2 st3 st4">服务账号</text>
+	</g>
+	<g>
+		<rect x="352.5" y="100.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M571,100.9v38H353v-38H571 M572,99.9H352v40h220V99.9L572,99.9z"/>
+	</g>
+	<g id="XMLID_45_">
+		<text transform="matrix(1 0 0 1 411.9638 127.068)" class="st2 st3 st4">自定义菜单</text>
+	</g>
+	<g id="XMLID_65_">
+		<text transform="matrix(1 0 0 1 874.2902 125.8799)" class="st2 st3 st4">OIDC 认证</text>
+	</g>
+	<g>
+		<rect x="1042.5" y="50.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1261,50.9v38h-218v-38L1261,50.9 M1262,49.9h-220v40h220V49.9L1262,49.9z"/>
+	</g>
+	<g id="XMLID_82_">
+		<text transform="matrix(1 0 0 1 1111.9636 75.8799)" class="st2 st3 st4">账号集成</text>
+	</g>
+	<g>
+		<rect x="1272.5" y="50.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1491,50.9v38h-218v-38L1491,50.9 M1492,49.9h-220v40h220V49.9L1492,49.9z"/>
+	</g>
+	<g>
+		<rect x="452.4" y="-179.7" class="st0" width="199" height="39"/>
+		<path class="st2" d="M650.9-179.2v38h-198v-38H650.9 M651.9-180.2h-200v40h200V-180.2L651.9-180.2z"/>
+	</g>
+	<g>
+		<rect x="662.5" y="-179.7" class="st0" width="199" height="39"/>
+		<path class="st2" d="M861-179.2v38H663v-38H861 M862-180.2H662v40h200V-180.2L862-180.2z"/>
+	</g>
+	<g>
+		<rect x="872.5" y="-179.7" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1071-179.2v38H873v-38H1071 M1072-180.2H872v40h200V-180.2L1072-180.2z"/>
+	</g>
+	<g>
+		<rect x="1082.5" y="-179.7" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1281-179.2v38h-198v-38H1281 M1282-180.2h-200v40h200V-180.2L1282-180.2z"/>
+	</g>
+	<g>
+		<rect x="1292.5" y="-179.7" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1491-179.2v38h-198v-38H1491 M1492-180.2h-200v40h200V-180.2L1492-180.2z"/>
+	</g>
+	<g>
+		<rect x="582.5" y="100.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M801,100.9v38H583v-38H801 M802,99.9H582v40h220V99.9L802,99.9z"/>
+	</g>
+	<g>
+		<rect x="1042.5" y="100.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1261,100.9v38h-218v-38H1261 M1262,99.9h-220v40h220V99.9L1262,99.9z"/>
+	</g>
+	<g>
+		<rect x="1272.5" y="100.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1491,100.9v38h-218v-38H1491 M1492,99.9h-220v40h220V99.9L1492,99.9z"/>
+	</g>
+	<g>
+		<rect x="812.5" y="150.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1031,150.9v38H813v-38H1031 M1032,149.9H812v40h220V149.9L1032,149.9z"/>
+	</g>
+	<g>
+		<rect x="582.5" y="150.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M801,150.9v38H583v-38H801 M802,149.9H582v40h220V149.9L802,149.9z"/>
+	</g>
+	<g>
+		<rect x="1042.5" y="150.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1261,150.9v38h-218v-38H1261 M1262,149.9h-220v40h220V149.9L1262,149.9z"/>
+	</g>
+	<g>
+		<rect x="1272.5" y="150.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M1491,150.9v38h-218v-38H1491 M1492,149.9h-220v40h220V149.9L1492,149.9z"/>
+	</g>
+	<g id="XMLID_84_">
+		<text transform="matrix(1 0 0 1 1341.9635 75.8797)" class="st2 st3 st4">单点登录</text>
+	</g>
+	<g>
+		<rect x="352.5" y="150.4" class="st0" width="219" height="39"/>
+		<path class="st2" d="M571,150.9v38H353v-38H571 M572,149.9H352v40h220V149.9L572,149.9z"/>
+	</g>
+	<g id="XMLID_95_">
+		<text transform="matrix(1 0 0 1 421.9639 177.068)" class="st2 st3 st4">租户管理</text>
+	</g>
+	<g>
+		<rect x="352.5" y="200.5" class="st0" width="372" height="39"/>
+		<path class="st2" d="M724,201v38H353v-38H724 M725,200H352v40h373V200L725,200z"/>
+	</g>
+	<g>
+		<rect x="735.5" y="200.5" class="st0" width="372" height="39"/>
+		<path class="st2" d="M1107,201v38H736v-38H1107 M1108,200H735v40h373V200L1108,200z"/>
+	</g>
+	<g>
+		<rect x="1119.5" y="200.5" class="st0" width="372" height="39"/>
+		<path class="st2" d="M1491,201v38h-371v-38H1491 M1492,200h-373v40h373V200L1492,200z"/>
+	</g>
+	<g id="XMLID_105_">
+		<text transform="matrix(1 0 0 1 488.4639 227.0887)" class="st2 st3 st4">多集群纳管</text>
+	</g>
+	<g id="XMLID_103_">
+		<text transform="matrix(1 0 0 1 860.1844 225.9007)" class="st2 st3 st4">K8s 资源管理</text>
+	</g>
+	<g id="XMLID_101_">
+		<text transform="matrix(1 0 0 1 1265.4641 225.9007)" class="st2 st3 st4">节点管理</text>
+	</g>
+	<g id="XMLID_99_">
+		<text transform="matrix(1 0 0 1 1111.9641 175.8797)" class="st2 st3 st4">角色模板</text>
+	</g>
+	<g id="XMLID_88_">
+		<text transform="matrix(1 0 0 1 1341.964 175.8797)" class="st2 st3 st4">操作审计</text>
+	</g>
+	<g id="XMLID_293_" class="st5">
+		<text transform="matrix(1 0 0 1 511.9005 -154.2965)" class="st2 st3 st4">开放共享</text>
+	</g>
+	<g id="XMLID_3_" class="st5">
+		<text transform="matrix(1 0 0 1 721.9637 -154.2964)" class="st2 st3 st4">订阅组件</text>
+	</g>
+	<g id="XMLID_14_" class="st5">
+		<text transform="matrix(1 0 0 1 931.9638 -154.2961)" class="st2 st3 st4">更新推送</text>
+	</g>
+	<g id="XMLID_16_" class="st5">
+		<text transform="matrix(1 0 0 1 1149.6941 -154.2964)" class="st2 st3 st4">AI 评测</text>
+	</g>
+	<g id="XMLID_18_" class="st5">
+		<text transform="matrix(1 0 0 1 1331.2542 -154.2964)" class="st2 st3 st4">RBAC 可视化</text>
+	</g>
+	<g id="XMLID_2_" class="st5">
+		<text transform="matrix(1 0 0 1 351.9637 -154.2962)" class="st2 st3 st4">组件市场</text>
+	</g>
+	<g>
+		<rect x="452.4" y="-129.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M650.9-129.3v38h-198v-38H650.9 M651.9-130.3h-200v40h200V-130.3L651.9-130.3z"/>
+	</g>
+	<g>
+		<rect x="662.5" y="-129.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M861-129.3v38H663v-38H861 M862-130.3H662v40h200V-130.3L862-130.3z"/>
+	</g>
+	<g>
+		<rect x="872.5" y="-129.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1071-129.3v38H873v-38H1071 M1072-130.3H872v40h200V-130.3L1072-130.3z"/>
+	</g>
+	<g>
+		<rect x="1082.5" y="-129.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1281-129.3v38h-198v-38H1281 M1282-130.3h-200v40h200V-130.3L1282-130.3z"/>
+	</g>
+	<g>
+		<rect x="1292.5" y="-129.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1491-129.3v38h-198v-38H1491 M1492-130.3h-200v40h200V-130.3L1492-130.3z"/>
+	</g>
+	<g id="XMLID_79_" class="st5">
+		<text transform="matrix(1 0 0 1 511.9004 -104.3796)" class="st2 st3 st4">发布组件</text>
+	</g>
+	<g id="XMLID_77_" class="st5">
+		<text transform="matrix(1 0 0 1 721.9637 -104.3795)" class="st2 st3 st4">安装组件</text>
+	</g>
+	<g id="XMLID_75_" class="st5">
+		<text transform="matrix(1 0 0 1 931.9636 -104.3794)" class="st2 st3 st4">版本管理</text>
+	</g>
+	<g id="XMLID_73_" class="st5">
+		<text transform="matrix(1 0 0 1 1141.9641 -104.3795)" class="st2 st3 st4">一键回滚</text>
+	</g>
+	<g id="XMLID_71_" class="st5">
+		<text transform="matrix(1 0 0 1 1341.9636 -104.3795)" class="st2 st3 st4">低代码平台</text>
+	</g>
+	<g id="XMLID_9_" class="st5">
+		<text transform="matrix(1 0 0 1 351.9637 -104.3795)" class="st2 st3 st4">组件管理</text>
+	</g>
+	<g>
+		<rect x="452.4" y="-79.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M650.9-79.3v38h-198v-38H650.9 M651.9-80.3h-200v40h200V-80.3L651.9-80.3z"/>
+	</g>
+	<g>
+		<rect x="662.5" y="-79.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M861-79.3v38H663v-38H861 M862-80.3H662v40h200V-80.3L862-80.3z"/>
+	</g>
+	<g>
+		<rect x="872.5" y="-79.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1071-79.3v38H873v-38H1071 M1072-80.3H872v40h200V-80.3L1072-80.3z"/>
+	</g>
+	<g>
+		<rect x="1082.5" y="-79.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1281-79.3v38h-198v-38H1281 M1282-80.3h-200v40h200V-80.3L1282-80.3z"/>
+	</g>
+	<g>
+		<rect x="1292.5" y="-79.8" class="st0" width="199" height="39"/>
+		<path class="st2" d="M1491-79.3v38h-198v-38H1491 M1492-80.3h-200v40h200V-80.3L1492-80.3z"/>
+	</g>
+	<g id="XMLID_195_" class="st5">
+		<text transform="matrix(1 0 0 1 511.9004 -54.3799)" class="st2 st3 st4">官方仓库</text>
+	</g>
+	<g id="XMLID_193_" class="st5">
+		<text transform="matrix(1 0 0 1 711.9637 -54.3797)" class="st2 st3 st4">自定义仓库</text>
+	</g>
+	<g id="XMLID_191_" class="st5">
+		<text transform="matrix(1 0 0 1 931.9636 -54.3795)" class="st2 st3 st4">安全认证</text>
+	</g>
+	<g id="XMLID_189_" class="st5">
+		<text transform="matrix(1 0 0 1 1141.9641 -54.3797)" class="st2 st3 st4">仓库同步</text>
+	</g>
+	<g id="XMLID_187_" class="st5">
+		<text transform="matrix(1 0 0 1 1351.9636 -54.3797)" class="st2 st3 st4">组件过滤</text>
+	</g>
+	<g id="XMLID_69_" class="st5">
+		<text transform="matrix(1 0 0 1 351.9637 -54.3796)" class="st2 st3 st4">仓库管理</text>
+	</g>
+	<g id="XMLID_5_" class="st5">
+		<text transform="matrix(1 0 0 1 873.9636 -197.442)" class="st2 st6 st7">组件市场</text>
+	</g>
+	<g id="XMLID_7_" class="st5">
+		<text transform="matrix(1 0 0 1 861.964 33.2008)" class="st2 st6 st7">管理工作台</text>
+	</g>
+	<g class="st8">
+		<rect x="332" y="-300.3" class="st2" width="380" height="50"/>
+	</g>
+	<g class="st8">
+		<rect x="732" y="-300.3" class="st2" width="380" height="50"/>
+	</g>
+	<g class="st8">
+		<rect x="1132" y="-300.3" class="st2" width="380" height="50"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 485.9639 -268.4743)" class="st0 st6 st7">开发者</text>
+	</g>
+	<g class="st9">
+		<rect x="332" y="280.3" class="st2" width="280" height="50"/>
+	</g>
+	<g class="st9">
+		<rect x="632" y="280.3" class="st2" width="280" height="50"/>
+	</g>
+	<g class="st9">
+		<rect x="932" y="280.3" class="st2" width="280" height="50"/>
+	</g>
+	<g class="st9">
+		<rect x="1232" y="280.3" class="st2" width="280" height="50"/>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 422.0322 312.1506)" class="st0 st6 st7">原生 K8s</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 682.0364 312.1506)" class="st0 st6 st7">公有云 K8s 服务</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 1282.0364 312.1503)" class="st0 st6 st7">其他 K8s 发行版</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 849.9639 -268.4741)" class="st0 st6 st7">生态合作伙伴</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 1273.9639 -268.4741)" class="st0 st6 st7">企业用户</text>
+	</g>
+	<g id="XMLID_49_">
+		<text transform="matrix(1 0 0 1 658.9998 125.8799)" class="st2 st3 st4">自定义门户</text>
+	</g>
+	<g id="XMLID_93_">
+		<text transform="matrix(1 0 0 1 651.9637 175.8794)" class="st2 st3 st4">项目管理</text>
+	</g>
+	<g id="XMLID_91_">
+		<text transform="matrix(1 0 0 1 871.2541 175.8794)" class="st2 st3 st4">RBAC 权限</text>
+	</g>
+	<g id="XMLID_89_">
+		<text transform="matrix(1 0 0 1 1111.9641 125.8797)" class="st2 st3 st4">角色管理</text>
+	</g>
+	<g id="XMLID_86_">
+		<text transform="matrix(1 0 0 1 1329.1448 125.8797)" class="st2 st3 st4">Kubeconfig</text>
+	</g>
+	<g>
+		<text transform="matrix(1 0 0 1 1016.6326 312.1503)" class="st0 st6 st7">Openshift</text>
+	</g>
+</g>
+</svg>

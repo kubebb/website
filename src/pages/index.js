@@ -65,14 +65,14 @@ function HomepageHeader({ isDark }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isDark, setIsDark] = React.useState(localStorage.getItem('theme') === 'dark');
+  const [isDark, setIsDark] = React.useState(window?.localStorage.getItem('theme') === 'dark');
   React.useEffect(() => {
     window.addEventListener('storage', (e) => {
       if (e.key === 'theme') {
         setIsDark(e.newValue === 'dark')
       }
     })
-  }, [localStorage.getItem('theme')])
+  }, [window?.localStorage.getItem('theme')])
   return (
     <Layout
       title={`Homepage of ${siteConfig.title}`}

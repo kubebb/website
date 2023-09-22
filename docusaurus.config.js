@@ -64,15 +64,15 @@ const config = {
         title: '',
         logo: {
           alt: 'Kubebb Logo',
-          src: "img/kubebb-logo-black.png",
-          srcDark: "img/kubebb-logo-white.png",
+          src: "img/kubebb-logo-black.svg",
+          srcDark: "img/kubebb-logo-white.svg",
         },
         items: [
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: '文档',
+            label: '文档中心',
           },
           /*{to: '/blog', label: 'Blog', position: 'left'},*/
           {
@@ -87,7 +87,7 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
+        style: 'light',
         links: [
           {
             title: '快速开始',
@@ -161,6 +161,14 @@ const config = {
                 href: 'https://github.com/kubebb',
               },
             ],
+          },
+          {
+            title: '加入我们',
+            items: [
+              {
+                html: `<img width="120px" src="/img/home/qrcode.webp" />`
+              }
+            ]
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} KubeBB`,

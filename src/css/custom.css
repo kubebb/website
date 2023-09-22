@@ -5,8 +5,15 @@
  */
 
 /* You can override the default Infima variables here. */
+
 :root {
-  --ifm-color-primary: #6396fa;
+  --ifm-color-primary: #4461EB;
+  --ifm-container-width-xl: 1500px;
+  --ifm-container-width: 1200px;
+  --ifm-spacing-horizontal: 40px;
+  /* --ifm-footer-background-color: white;
+  --ifm-footer-color: #444;
+  --ifm-footer-link-color: #444; */
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
   --ifm-color-primary-darkest: #205d3b;
@@ -19,7 +26,7 @@
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary: #4461EB;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
   --ifm-color-primary-darkest: #1a8870;
@@ -27,4 +34,16 @@
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (min-width: 996px) {
+  .container {
+    min-width: var(--ifm-container-width);
+    max-width: var(--ifm-container-width-xl);
+  }
+}
+
+.container .row {
+  width: 100%;
+  margin: 0 auto;
 }

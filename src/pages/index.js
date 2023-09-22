@@ -6,6 +6,7 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import HomepageFrames from '@site/src/components/HomepageFrames';
 import HomepageFooterBanner from '@site/src/components/HomepageFooterBanner';
+import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './index.module.css';
 
@@ -65,14 +66,8 @@ function HomepageHeader({ isDark }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const [isDark, setIsDark] = React.useState(window?.localStorage.getItem('theme') === 'dark');
-  React.useEffect(() => {
-    window.addEventListener('storage', (e) => {
-      if (e.key === 'theme') {
-        setIsDark(e.newValue === 'dark')
-      }
-    })
-  }, [window?.localStorage.getItem('theme')])
+  const { colorMode, setColorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   return (
     <Layout
       title={`Homepage of ${siteConfig.title}`}

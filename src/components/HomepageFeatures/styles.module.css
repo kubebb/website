@@ -1,11 +1,68 @@
 .features {
-  display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 0 0 4rem 0;
   width: 100%;
+  background-color: white;
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+@keyframes vgJgjBFw {
+  0% {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 100%;
+  }
 }
+   
+.bg {
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  height: 160px;
+  width: 160px;
+  margin: 0 auto 30px auto;
+}
+.features :global(.col--4):hover .bg1,
+.features :global(.col--4):hover .bg2 {
+  animation: vgJgjBFw 0.3s steps(10) forwards;
+}
+.features :global(.col--4):hover .bg3 {
+  animation: vgJgjBFw 0.3s steps(12) forwards;
+}
+
+.bg1 {
+  background-image: url(../../../static/img/home/featrue-bg1.png);
+}
+.bg2 {
+  background-image: url(../../../static/img/home/featrue-bg2.png);
+}
+.bg3 {
+  background-image: url(../../../static/img/home/featrue-bg3.png);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  color: black;
+}
+
+.desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  opacity: 0.7;
+}
+
+/* dark start */
+
+html[data-theme=dark] .features {
+  background-color: #17171a;
+}
+html[data-theme=dark] .features .title {
+  color: white;
+}
+html[data-theme=dark] .features .desc {
+  color: white;
+}
+
+/* dark end */
+

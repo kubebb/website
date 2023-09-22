@@ -1,0 +1,13 @@
+.footerBanner {
+  background-color: var(--ifm-color-primary);
+  background-image: url(../../../static/img/home/footer-banner.webp);
+  background-position: center;
+  height: 230px;
+}
+.footerBanner .title {
+  font-size: 32px;
+  line-height: 230px;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+}

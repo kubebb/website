@@ -49,11 +49,11 @@ const framesList = [
   },
 ];
 
-export default function HomepageFrames(props) {
+export default function HomepageFrames() {
   const [ curr, setCurr ] = React.useState(0);
   const currFrame = framesList.find((_, idx) => idx === curr);
   return (
-    <section className={clsx(styles.frames, props.isDark ? styles.dark : undefined)}>
+    <section className={clsx(styles.frames)}>
       <div className={clsx('container', styles.title)}>Kubebb 组件全生命周期管理平台</div>
       <div className="container">
         <div className="row">

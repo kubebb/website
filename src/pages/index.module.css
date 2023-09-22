@@ -177,39 +177,39 @@ html[data-theme=dark] :global(.footer__bottom){
 
 /* dark start */
 
-header.dark {
+html[data-theme=dark] header {
   background-color: #17171a;
 }
 
-.dark .heroBanner {
+html[data-theme=dark] .heroBanner {
   background-image: unset;
   background-color: #17171a;
 }
 
-.dark .heroBanner .title {
+html[data-theme=dark] .heroBanner .title {
   color: white;
 }
-.dark .heroBanner .subtitle {
+html[data-theme=dark] .heroBanner .subtitle {
   color: white;
 }
-.dark .heroBanner .videoWrapper {
+html[data-theme=dark] .heroBanner .videoWrapper {
   background-color: #17171a;
 }
 
-.dark .clickcards :global(.row) {
+html[data-theme=dark] .clickcards :global(.row) {
   border: 1px solid #343435;
   background-color: rgba(0, 0, 0, 0);
 }
-.dark .clickcards .cardItem {
+html[data-theme=dark] .clickcards .cardItem {
   background: rgba(35, 35, 36);
 }
-.dark .clickcards .cardItem .cardtitle {
+html[data-theme=dark] .clickcards .cardItem .cardtitle {
   color: #eee;
 }
-.dark .clickcards .cardItem .carddesc {
+html[data-theme=dark] .clickcards .cardItem .carddesc {
   color: #eee;
 }
-.dark .clickcards:global(.container) {
+html[data-theme=dark] .clickcards:global(.container) {
   background-color: unset;
 }
 /* dark end */

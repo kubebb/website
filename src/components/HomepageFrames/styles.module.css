@@ -81,35 +81,35 @@
 
 /* dark start */
 
-.dark.frames {
+html[data-theme=dark] .frames {
   background-color: #17171a;
 }
-.dark.frames .title {
+html[data-theme=dark] .frames .title {
   color: white;
 }
-.dark.frames .desc {
+html[data-theme=dark] .frames .desc {
   color: white;
 }
-.dark .tabs {
+html[data-theme=dark] .tabs {
   background-image: unset;
   background-color: rgba(35, 35, 36);
 }
 
-.dark .content {
+html[data-theme=dark] .content {
   background-color: rgba(35, 35, 36);
 }
 
-.dark .content .contentTitle {
+html[data-theme=dark] .content .contentTitle {
   color: white;
 }
-.dark .content .contentDesc {
+html[data-theme=dark] .content .contentDesc {
   color: white;
   opacity: 0.7;
 }
-.dark .tabs .tabBg {
+html[data-theme=dark] .tabs .tabBg {
   mix-blend-mode: overlay;
 }
-.dark .tab:hover {
+html[data-theme=dark] .tab:hover {
   color: inherit;
   background-color: #3d424e;
 }

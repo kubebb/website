@@ -43,9 +43,9 @@ function Feature({ idx, title, description }) {
   );
 }
 
-export default function HomepageFeatures(props) {
+export default function HomepageFeatures() {
   return (
-    <section className={clsx(styles.features, props.isDark ? styles.dark : undefined)}>
+    <section className={clsx(styles.features)}>
       <div className="container">
         <div className="row">
           {FeatureList.map((props, idx) => (

@@ -10,10 +10,10 @@ import { useColorMode } from '@docusaurus/theme-common';
 
 import styles from './index.module.css';
 
-function HomepageHeader({ isDark }) {
+function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <header className={clsx(isDark ? styles.dark : undefined)}>
+    <header>
       <div className={clsx(styles.heroBanner)}>
         <div className="container">
           <div className="row">
@@ -66,17 +66,15 @@ function HomepageHeader({ isDark }) {
 
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
-  const { colorMode, setColorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
   return (
     <Layout
       title={`Homepage of ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
-      <HomepageHeader isDark={isDark} />
+      <HomepageHeader />
       <main>
-        <HomepageFeatures isDark={isDark} />
-        <HomepageFrames isDark={isDark} />
-        <HomepageFooterBanner isDark={isDark} />
+        <HomepageFeatures />
+        <HomepageFrames />
+        <HomepageFooterBanner />
       </main>
     </Layout>
   );

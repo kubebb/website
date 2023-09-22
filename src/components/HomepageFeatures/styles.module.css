@@ -54,13 +54,13 @@
 
 /* dark start */
 
-.dark.features {
+html[data-theme=dark] .features {
   background-color: #17171a;
 }
-.dark.features .title {
+html[data-theme=dark] .features .title {
   color: white;
 }
-.dark.features .desc {
+html[data-theme=dark] .features .desc {
   color: white;
 }
 

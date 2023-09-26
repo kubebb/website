@@ -1,5 +1,7 @@
 ---
-sidebar_position: 12
+sidebar_position: 13
+title: 常见问题
+sidebar_label: 常见问题
 ---
 
 

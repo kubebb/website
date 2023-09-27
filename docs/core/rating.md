@@ -2,9 +2,9 @@
 sidebar_position: 4
 ---
 
-# 组件评级
+# 组件评测
 
-**组件评级**的目的是通过尽可能多的自动化测试从多个维度来评估一个组件。因此，**组件评级**三个部分的内容:
+**组件评测**的目的是通过尽可能多的自动化测试从多个维度来评估一个组件。因此，**组件评测**三个部分的内容:
 
 - 定义并完成组件的自动化测试
 - 收集处理测试数据
@@ -18,8 +18,8 @@ sidebar_position: 4
 
 :::tip
 
-- 参考[启用组件评级](./userguide/enablerating)快速使用Rating
-- 参考[组件评级概念](./concepts/rating)了解Rating的实现原理
+- 参考[启用组件评测](./userguide/enablerating)快速使用Rating
+- 参考[组件评测概念](./concepts/rating)了解Rating的实现原理
 
 :::
 

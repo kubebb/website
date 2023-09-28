@@ -21,7 +21,17 @@ sidebar_position: 1
 
 参考[安装内核](../../quick-start/core_quickstart)完成内核(未启用Rating)安装。
 
-## 2. 安装Tekton流水线
+## 2. 创建命名空间 `kubebb-addons`
+
+:::info
+后续安装的组件都会添加到`kubebb-addons`命名空间中，作为kubebb的扩展
+:::
+
+```shell
+kubectl create namespace kubebb-addons
+```
+
+## 3. 安装Tekton流水线
 
 官方组件仓库提供了[Tekton组件安装包](https://github.com/kubebb/components/tree/main/charts/tekton-operator)和[Tekton安装示例](https://github.com/kubebb/components/tree/main/examples/tekton-operator)。可以使用内核快速完成tekton的安装。
 
@@ -51,7 +61,7 @@ my-tekton-tekton-operator-webhook-78bdfcbc77-6k6cx   1/1     Running   0        
 
 如果长时间安装未完成,可查看对应的Componentplan资源的状态。
 
-## 3. 安装Arcadia AI组件
+## 4. 安装Arcadia AI组件
 
 > Arcadia组件位于另外的一个[组件仓库](https://github.com/kubeagi/arcadia/tree/main/charts)
 
@@ -99,7 +109,7 @@ arcadia-5cb86f8787-jvd7j                             0/1     Running            
 arcadia-5cb86f8787-jvd7j                             1/1     Running             0          30s
 ```
 
-### 4. 更新内核
+### 5. 更新内核
 
 通过设置参数`deployment.rating_enable=true`来启用Rating
 

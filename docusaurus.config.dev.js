@@ -166,7 +166,7 @@ const config = {
             title: '加入我们',
             items: [
               {
-                html: `<img width="120px" src="/img/home/qrcode.webp" />`
+                html: `<img width="120px" src="/website/img/home/qrcode.webp" />`
               }
             ]
           },

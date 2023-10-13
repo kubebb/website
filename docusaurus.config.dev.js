@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const href_pre = 'https://docs.tenxcloud.com';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -74,14 +75,26 @@ const config = {
             position: 'left',
             label: '文档中心',
           },
-          /*{to: '/blog', label: 'Blog', position: 'left'},*/
           {
-            type: 'localeDropdown',
-            position: 'right',
+            to: '/market',
+            position: 'left',
+            label: '组件市场',
           },
           {
             href: 'https://github.com/kubebb/',
+            className: 'noIcon',
             label: 'GitHub',
+            position: 'left',
+          },
+          {
+            href: 'https://dev.tenxcloud.com/',
+            className: 'noIcon',
+            position: 'left',
+            label: '开发者社区',
+          },
+          /*{to: '/blog', label: 'Blog', position: 'left'},*/
+          {
+            type: 'localeDropdown',
             position: 'right',
           },
         ],
@@ -90,72 +103,58 @@ const config = {
         style: 'light',
         links: [
           {
-            title: '快速开始',
+            title: 'Kubebb',
             items: [
               {
-                label: '预先准备',
+                label: '快速开始',
                 to: '/docs/quick-start/prerequisite',
               },
               {
-                label: '安装内核',
-                to: '/docs/quick-start/core_quickstart',
-              },
-              {
-                label: '安装底座',
-                to: '/docs/quick-start/buildingbase_quickstart',
-              },
-            ],
-          },
-          {
-            title: '内核Kit',
-            items: [
-              {
-                label: '介绍',
+                label: '内核 Kit',
                 to: '/docs/core/intro',
               },
               {
-                label: '概念',
-                to: '/docs/category/概念',
-              },
-              {
-                label: '组件评级',
-                to: '/docs/core/rating',
-              },
-            ],
-          },
-          {
-            title: '底座Kit',
-            items: [
-              {
-                label: '介绍',
+                label: '底座 Kit',
                 to: '/docs/building-base/intro',
               },
               {
-                label: '自定义配置',
-                to: '/docs/category/自定义配置',
+                label: '低码 Kit',
+                to: '/docs/lowcode-development/intro',
               },
             ],
           },
           {
-            title: '低码Kit',
+            title: '开源产品',
             items: [
               {
-                label: '介绍',
+                label: '微服务框架',
+                href: href_pre + '/docs/TMF/产品介绍',
+              },
+              {
+                label: '服务网格',
+                href: href_pre + '/docs/服务网格/产品介绍',
+              },
+              {
+                label: 'API网关',
+                href: href_pre + '/docs/TAMP/产品介绍',
+              },
+              {
+                label: '应用性能监控',
+                href: href_pre + '/docs/TAPM/产品介绍',
+              },
+              {
+                label: '云梯低代码平台',
                 to: '/docs/lowcode-development/intro',
-              },
-              {
-                label: '开发模式',
-                to: '/docs/lowcode-development/development_pattern',
-              },
-              {
-                label: '组件开发',
-                to: '/docs/category/组件开发',
               },
             ],
           },
           {
             title: '更多信息',
             items: [
+              {
+                label: 'Github issue',
+                href: 'https://github.com/kubebb/core/issues',
+              },
               {
                 label: 'Github',
                 href: 'https://github.com/kubebb',

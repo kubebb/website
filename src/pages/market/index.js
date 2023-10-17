@@ -310,6 +310,7 @@ function MarketContent({ search }) {
                       if (item.to) {
                         if (item.to.startsWith('http')) {
                           window.open(item.to)
+                          return
                         }
                         history.push(item.to)
                       }

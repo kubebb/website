@@ -60,7 +60,7 @@ sidebar_position: 4
 2. 切换顶部导航到**发布管理**，默认进入`发布记录`页面，点击**发布应用**按钮，配置参数说明如下：
 
 - 发布名称：只读展示应用名称（命名空间），其中应用名称即发布到组件仓库后的组件名称
-- 发布基线：可选Branch（分支）、CommitId。
+- 发布基线：可选Branch（即分支名称）、CommitId。
 
   - 默认选中Branch，先选择分支名称，再级联选择 CommitId。选择 CommitId 时，同步展示提交内容和时间。
   - 选择 CommitId，手动输入 CommitId。
@@ -73,7 +73,7 @@ sidebar_position: 4
 ![overview](./images/app-publish.png)
 
 - 发布名称：应用名称（命名空间名称）。
-- 发布基线：分支名称（commitID）或者 CommitId。hover展示详细信息，包括提交人、提交时间、提交信息。
+- 发布基线：展示分支名称（CommitId）或者 CommitId。hover展示详细信息，包括提交人、提交时间、提交信息。
 - 发布状态：发布中、发布成功、发布失败。 
 
   - 发布中：展示发布进度。

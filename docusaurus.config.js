@@ -5,6 +5,19 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const href_pre = 'https://docs.tenxcloud.com';
 
+const urlMaps = {
+  github: {
+    url: 'https://kubebb.github.io',
+    baseUrl: '/website',
+  },
+  cn: {
+    url: 'http://kubebb.k8s.com.cn',
+    baseUrl: '/',
+  },
+}
+
+const curr_url_map = urlMaps[process.env.DEPLOY_PLATFORM || 'cn']
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Framework as a Building Block for Kubernetes',
@@ -12,10 +25,10 @@ const config = {
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
-  url: 'http://kubebb.k8s.com.cn',
+  url: curr_url_map?.url || 'http://kubebb.k8s.com.cn',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: curr_url_map?.baseUrl || '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -165,7 +178,8 @@ const config = {
             title: '加入我们',
             items: [
               {
-                html: `<img width="120px" src="/img/home/qrcode.webp" />`
+                html: `<img width="120px" src="${!curr_url_map?.baseUrl || curr_url_map?.baseUrl === '/' ?
+                  '' : curr_url_map?.baseUrl}/img/home/qrcode.webp" />`
               }
             ]
           },

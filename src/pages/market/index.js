@@ -19,7 +19,7 @@ const data = [
     desc: '提供 API 的完整生命周期管理，以及丰富的插件能力',
     icon: <Api />,
     tag: 'official',
-    types: [ 'msa' ],
+    types: [ 'apigateway' ],
     to: href_pre + '/docs/TAMP/产品介绍',
     new: true,
     bottoms: [
@@ -130,6 +130,10 @@ const func_types = [
   {
     name: '服务治理',
     value: 'msa',
+  },
+  {
+    name: 'API 网关',
+    value: 'apigateway',
   },
   {
     name: '数据库',

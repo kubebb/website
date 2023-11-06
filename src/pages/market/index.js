@@ -10,6 +10,7 @@ import Tdsf from '../../../static/img/market/tdsf.svg';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
 import { useHistory } from '@docusaurus/router';
+import { curr_url_map } from '../../../static/contants';
 
 const href_pre = 'https://docs.tenxcloud.com';
 const data = [
@@ -95,7 +96,7 @@ const data = [
     icon: <Yunti />,
     tag: 'official',
     types: [ 'dev-tool' ],
-    to: '/docs/lowcode-development/intro',
+    to: (curr_url_map?.baseUrl === '/' || !curr_url_map.baseUrl ? '' : curr_url_map.baseUrl) + '/docs/lowcode-development/intro',
     new: true,
     bottoms: [
       {

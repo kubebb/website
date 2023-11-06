@@ -10,6 +10,7 @@ import Tdsf from '../../../static/img/market/tdsf.svg';
 import Layout from '@theme/Layout';
 import styles from './index.module.css';
 import { useHistory } from '@docusaurus/router';
+import { curr_url_map } from '../../../static/contants';
 
 const href_pre = 'https://docs.tenxcloud.com';
 const data = [
@@ -18,7 +19,7 @@ const data = [
     desc: '提供 API 的完整生命周期管理，以及丰富的插件能力',
     icon: <Api />,
     tag: 'official',
-    types: [ 'msa' ],
+    types: [ 'apigateway' ],
     to: href_pre + '/docs/TAMP/产品介绍',
     new: true,
     bottoms: [
@@ -95,7 +96,7 @@ const data = [
     icon: <Yunti />,
     tag: 'official',
     types: [ 'dev-tool' ],
-    to: '/docs/lowcode-development/intro',
+    to: (curr_url_map?.baseUrl === '/' || !curr_url_map.baseUrl ? '' : curr_url_map.baseUrl) + '/docs/lowcode-development/intro',
     new: true,
     bottoms: [
       {
@@ -129,6 +130,10 @@ const func_types = [
   {
     name: '服务治理',
     value: 'msa',
+  },
+  {
+    name: 'API 网关',
+    value: 'apigateway',
   },
   {
     name: '数据库',

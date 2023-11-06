@@ -29,7 +29,7 @@ BFF 层是采用 [NestJS](https://docs.nestjs.com/) 和 [GraphQL](https://graphq
     pnpm add @nestjs/graphql @nestjs/apollo @apollo/server graphql
     ```
 
-2. 接入 Grahpql
+2. 接入 GraphQL
 
     ```
     <!-- src/app.module.ts -->

@@ -2,12 +2,12 @@
 sidebar_position: 1
 ---
 
-# 启用Rating
+# 快速部署
 
 默认情况下，Rating组件评级功能是关闭的，需要手动启用。我们建议按照以下步骤启用Rating:
 
 :::tip
-详细了解更多Rating有关内容，请参考[组件评级设计](../rating)和[Rating CRD定义](../concepts/rating)
+详细了解更多Rating有关内容，请参考[组件评测设计](../rating)和[Rating CRD定义](../concepts/rating)
 :::
 
 **Rating**依赖两个组件，分别是:

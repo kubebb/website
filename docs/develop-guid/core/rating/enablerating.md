@@ -19,7 +19,7 @@ sidebar_position: 1
 
 ## 1.安装kubebb core
 
-参考[安装内核](../../quick-start/core_quickstart)完成内核(未启用Rating)安装。
+参考[安装内核](../../../quick-start/quick-install.md)完成内核(未启用Rating)安装。
 
 ## 2. 创建命名空间 `kubebb-addons`
 

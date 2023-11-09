@@ -4,233 +4,36 @@ sidebar_position: 4
 
 # 发布 HelloWorld 组件
 
-内核安装完成后可通过[官方组件仓库](https://github.com/kubebb/components)快速体验组件化的部署:
-
-:::tip
-**kubebb**为[官方组件仓库](https://github.com/kubebb/components),内核安装过程中默认添加,提供多个认证仓库、组件和组件应用.
+:::tip 前提条件
+已完成 Kubebb 的安装，参考[安装 Kubebb](./quick-install.md)
 :::
 
-1. 通过以下命令查看仓库列表:
+Kubebb 安装完成后，可通过[官方组件仓库](https://github.com/kubebb/components)快速体验组件的部署和使用。本章节主要以 HelloWorld 组件为例，演示组件发布、安装、使用流程。
 
-```shell
-kubectl get repository -nkubebb-system
-```
+    kubebb 为内置的官方组件仓库，提供多功能组件。 HelloWorld 组件作为演示组件内置在<组件市场>中。
 
-默认情况下，至少包含仓库**kubebb**
-
-```shell
-(base) ➜  charts git:(dev) kubectl get repository -nkubebb-system
-NAME     AGE
-kubebb   14m
-```
-
-如果没有看到**kubebb**,可手动添加:
+1. 进入【组件市场/组件仓库管理】，即可查看到仓库 `kubebb`，如果没有，可手动添加
 
 ```shell
 kubectl apply -f https://raw.githubusercontent.com/kubebb/components/main/repos/repository_kubebb.yaml
 ```
 
-2. 获取官方仓库中的组件
+2. 进入【组件市场/组件市场】，搜索“hello”，如下图，示例组件（hello-world）
 
-```shell
-kubectl get components -nkubebb-system  -l kubebb.component.repository=kubebb
-```
+![组件市场](images/componetmarket.png)
 
-如果一切正常，输出如下:
+3. 单击组件卡片的**安装**，进入安装页面，示例组件各选项配置说明如下：填写部署名称，选择组件版本，选择安装位置（租户、项目），检查 values.yaml。
 
-```shell
-NAME                       AGE
-kubebb.bc-apis             135m
-kubebb.bc-depository       135m
-kubebb.bc-explorer         135m
-kubebb.cluster-component   135m
-kubebb.fabric-operator     135m
-kubebb.ingress-nginx       135m
-kubebb.kubebb              135m
-kubebb.kubebb-core         135m
-kubebb.minio               135m
-kubebb.tekton-operator     135m
-kubebb.u4a-component       135m
-kubebb.weaviate            135m
-```
+- 部署名称：例helloworld，`由3~53个小写字母、数字、中划线“-”组成，并以字母、数字开头或结尾`
+- 更新方式：默认手动即可
+- 组件版本：默认第一个0.1.0即可
+- 安装位置：按您需要选择租户、项目
+- values.yaml：无需改动。如果安装其他组件，请点击页面上方 “安装说明” 查看是否需要调整配置文件内容。
+- 镜像替换：本示例暂无需添加替换规则
 
-3. 部署一个组件
+![组件安装](images/componetinstall.png)
 
-> 以部署`kubebb.minio`为例
+4. 点击**确定**，开始安装，自动跳转到所选租户、项目&集群的<我安装的>列表页面，查看安装结果。
+5. 安装成功后，刷新页面，点击左上角所有菜单，可见，至此完成组件安装、使用流程。
 
-```shell
-kubectl apply -f https://raw.githubusercontent.com/kubebb/components/main/examples/minio/componentplan.yaml
-```
-
-查看组件部署状态:
-
-```shell
-kubectl get componentplan my-minio -oyaml
-```
-
-查看组件Pod状态
-
-```shell
-kubectl get pods -l core.kubebb.k8s.com.cn/componentplan=my-minio
-```
-
-如果一切正常，输出如下:
-
-```shell
-NAME             READY   STATUS    RESTARTS   AGE
-my-minio-0   1/1     Running   0          42h
-my-minio-1   1/1     Running   0          42h
-my-minio-2   1/1     Running   0          42h
-```
-
-## 部署一个私有仓库
-
-1. 在官方仓库中部署chartmuseum
-
-```shell
-kubectl apply -f https://raw.githubusercontent.com/kubebb/components/main/examples/chartmuseum/componentplan.yaml
-```
-
-2. 添加仓库
-
-```yaml
-# repository_chartmuseum.yaml
-apiVersion: core.kubebb.k8s.com.cn/v1alpha1
-kind: Repository
-metadata:
-  name: chartmuseum
-  namespace: kubebb-system
-spec:
-  url: http://chartmuseum.kubebb-system.svc.cluster.local:8080
-  pullStategy:
-    intervalSeconds: 120
-    retry: 5
-```
-
-创建仓库
-
-```shell
-kubectl apply -f repository_chartmuseum.yaml 
-```
-
-执行结果
-
-```shell
-kubectl get repository -nkubebb-system
-NAME          AGE
-chartmuseum   4m41s
-kubebb        15h
-```
-
-端口暴露
-
-```shell
-kubectl port-forward service/chartmuseum 8080:8080 -nkubebb-system
-```
-
-上传自定义chart
-
-```shell
-helm create mychart
-cd mychart
-helm package .
-curl --data-binary "@mychart-0.1.0.tgz" http://localhost:8080/api/charts
-```
-
-从私有仓库中查看
-
-```
-kubectl get component -l kubebb.component.repository=chartmuseum -nkubebb-system
-NAME                  AGE
-chartmuseum.mychart   4m27s
-```
-
-## 体验自定义配置
-
-1. 自定义门户的主色调
-```shell
-kubectl edit cm portal-global-configs -n u4a-system
-```
-修改 primaryColor 即可自定义门户主色调
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: portal-global-configs
-data:
-  global-configs: |
-    {"theme": {"primaryColor": "#FE8F35"}}
-```
-
-2. 自定义菜单
-
-kubebb 的所有菜单均基于 menu 的 CRD 进行定义，如果需要添加自己的菜单，可以参考以下 memnu 示例:
-```yaml
-# 主菜单
-apiVersion: component.t7d.io/v1beta1
-kind: Menu
-metadata:
-  name: demo-menu
-spec:
-  column: 1
-  isRenderSelectCurrent: false
-  parentOwnerReferences:
-    apiVersion: ""
-    kind: ""
-    name: ""
-    uid: ""
-  rankingInColumn: 100
-  tenant: true
-  text: 测试菜单
-  textEn: "Test Menu"
----
-# 测试菜单索引菜单
-apiVersion: component.t7d.io/v1beta1
-kind: Menu
-metadata:
-  name: demo-menu-index
-spec:
-  getTitleForReplaceSider: {}
-  parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
-    blockOwnerDeletion: false
-    controller: false
-    kind: Menu
-    name: demo-menu
-    uid: ""
-  rankingInColumn: 100
-  tenant: true
-  text: 菜单索引项
-  textEn: “Menu Index Item"
----
-# 子菜单，具备实际链接功能
-apiVersion: component.t7d.io/v1beta1
-kind: Menu
-metadata:
-  name: demo-menu-submenu1
-spec:
-  getTitleForReplaceSider: {}
-  isRenderSelectCurrent: false
-  parentOwnerReferences:
-    apiVersion: component.t7d.io/v1beta1
-    blockOwnerDeletion: false
-    controller: false
-    kind: Menu
-    name: demo-menu-index
-    uid: ""
-  pathname: /demo-feature1
-  rankingInColumn: 200
-  text: 测试子菜单
-  textEn: "Test Submenu"
-```
-
-使用 `kubectl apply -f` 即可将菜单项部署到环境中，如下图所示：
-![图 1](images/4a52ae49bf01baee581357a57038c5792dab1fe153770917e42a5888a7ebebdc.png)  
-
-* 详细介绍参考 [自定义菜单](docs/develop-guid/building-base/configuration/customize-menu.md)
-
-3. 多语言 & 白天/黑夜模式
-
-1）通过右上角的语言切换按钮进行多语言切换，目前支持中文、英文两种语言
-
-2）通过右上角的按钮切换白天/黑夜模式
+![菜单](images/menu.png)

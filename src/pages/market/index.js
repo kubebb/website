@@ -90,25 +90,25 @@ const data = [
       }
     ]
   }, 
-  {
-    title: '云梯低代码',
-    desc: '一个面向开发者的低代码业务应用快速搭建平台',
-    icon: <Yunti />,
-    tag: 'official',
-    types: [ 'dev-tool' ],
-    to: (curr_url_map?.baseUrl === '/' || !curr_url_map.baseUrl ? '' : curr_url_map.baseUrl) + '/docs/lowcode-development/intro',
-    new: true,
-    bottoms: [
-      {
-        th: '组件仓库',
-        td: '官方仓库',
-      },
-      {
-        th: '关键词',
-        td: '简单易用，拖拽式开发，可视化配置',
-      }
-    ]
-  }, 
+  // {
+  //   title: '云梯低代码',
+  //   desc: '一个面向开发者的低代码业务应用快速搭建平台',
+  //   icon: <Yunti />,
+  //   tag: 'official',
+  //   types: [ 'dev-tool' ],
+  //   to: (curr_url_map?.baseUrl === '/' || !curr_url_map.baseUrl ? '' : curr_url_map.baseUrl) + '/docs/lowcode-development/intro',
+  //   new: true,
+  //   bottoms: [
+  //     {
+  //       th: '组件仓库',
+  //       td: '官方仓库',
+  //     },
+  //     {
+  //       th: '关键词',
+  //       td: '简单易用，拖拽式开发，可视化配置',
+  //     }
+  //   ]
+  // }, 
 ]
 
 const providers = [

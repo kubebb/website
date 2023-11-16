@@ -7,10 +7,6 @@ const urlMaps = {
     url: 'http://kubebb.k8s.com.cn',
     baseUrl: '/',
   },
-  test: {
-    url: 'http://kubebb.k8s.com.cn',
-    baseUrl: '/test',
-  },
 };
 
 exports.urlMaps = urlMaps;

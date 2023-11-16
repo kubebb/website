@@ -3,6 +3,7 @@
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const { ProvidePlugin } = require('webpack')
 const { curr_url_map } = require('./static/contants.js');
 const href_pre = 'https://docs.tenxcloud.com';
 
@@ -55,6 +56,10 @@ const config = {
         },
       }),
     ],
+  ],
+
+  plugins: [
+    require.resolve('./docusuarusWebpack5Plugin')
   ],
 
   themeConfig:

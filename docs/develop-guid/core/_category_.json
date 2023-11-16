@@ -1,6 +1,6 @@
 {
   "label": "内核Kit",
-  "position": 3,
+  "position": 2,
   "link": {
     "type": "generated-index",
     "description": "管理组件生命周期"

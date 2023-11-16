@@ -1,104 +1,69 @@
 ---
 sidebar_position: 1
+title: 产品介绍
+sidebar_label: 产品介绍
 ---
 
-# 总览
 
-KubeBB(Kubernetes Building Blocks)是一种由[**内核**](./core/intro)驱动的组件生命周期管理平台，集成开箱即用的[**云原生底座**](./building-base/intro)和[**低码组件开发**](./lowcode-development/intro)能力,整合实现[**云原生三层组件模式**](./lowcode-development/development_pattern)。
+# 产品介绍
 
-![overview](./images/kubebb_overview.drawio.png)
+Kubebb(Kubernetes Building Blocks) 是一种由内核驱动的组件生命周期管理平台，集成了开箱即用的云原生底座和低码组件开发能力。
 
-Kubebb提供三个**套件**：
+- **提供底座服务，快速开启搭建**：提供账号、认证(OIDC)、权限(RBAC)、审计(Audit)的基础功能，采用更加标准的技术方式提供构建的底座服务
+- **内核驱动的声明式组件管理**：提供声明式的组件仓库管理、组件同步、组件订阅、部署以及多维度的组件评级，完整适配 Helm 生态，集成微前端框架
+- **灵活的组件开发模式**：基于微前端框架和低代码开发，定义了标准的组件封装及发布模式，让开发者可以在底座之上按照开发规范进行组件的快速开发和发布，并在统一的服务门户上对外提供服务
+- **内置丰富组件**：包括官方提供的微服务治理、服务网格、API网关、应用性能监控的开源版本，详细介绍参见[**开源文档**](https://docs.tenxcloud.com/)。还有其他常见的数据库、存储、消息队列等开源组件供您选择使用。
 
-- [**内核 Kit**](./core/intro)
+## 功能说明
 
-提供**声明式的组件生命周期管理和组件市场**,并通过**Tekton流水线**强化低代码平台组件与底座服务的集成。
+Kubebb 部署后主要有管理工作台、组件市场两部分能力。管理工作台用户指南详见[管理工作台](https://docs.tenxcloud.com/docs/管理工作台/intro)
+<table>  
+    <tr>    
+        <th>模块</th>  
+        <th colspan="2">说明</th>
+    </tr>  
+    <tr><td rowspan="4" width="15%">组件市场</td>
+    <td width="20%" >组件市场</td>
+    <td>组件的商店，支持浏览、订阅、下载、安装组件</td>
+    </tr>  
+    <tr><td>组件管理</td>
+    <td>1. 我发布的：支持手动发布组件到仓库；支持发布多版本<br /> 2. 我安装的：支持安装、更新、卸载组件；支持历史版本管理和版本回滚 <br /> 3. 我订阅的：支持订阅、取消订阅组件；支持版本更新推送 </td>
+    </tr> 
+    <tr><td>组件仓库管理</td>
+    <td>1. 支持添加、编辑、删除组件仓库<br /> 2. 支持配置仓库安全认证、仓库同步设置、仓库组件过滤规则、镜像仓库替换规则、开启组件评测等</td>
+    </tr>  
+    <tr><td>组件评测</td>
+    <td>使用智能 AI 对组件从安全性、可靠性、可用性三方面进行综合评测，为您的选择提供参考数据</td>
+    </tr>  
+    <tr>     
+        <td rowspan="6" width="15%">管理工作台</td>   
+        <td width="20%" >集群管理</td>
+        <td>1. 多集群统一视图管理<br /> 2. 资源管理：分内置和自定义资源，各资源支持yaml方式查看编辑<br /> 3. 集群角色和角色模板管理：集群角色支持绑定角色主体有成员、组和服务账号，均支持yaml方式查看和编辑</td>
+    </tr>
+    <tr><td>租户和项目管理</td>
+    <td>1. 多租户、多项目统一视图管理：查看租户或项目标签、授权集群等<br />2. 租户授权集群，设置租户管理员<br />3. 项目授权集群，设置项目管理员<br />4. 项目内角色和成员管理、项目内服务账号管理<br />5. 对应资源均支持yaml方式编辑</td>
+    </tr> 
+    <tr><td>主体管理</td>
+    <td>管理成员和组：创建、查看、删除成员；修改成员密码；创建、查看、删除组，组内加入或移出成员</td>
+    </tr> 
+    <tr><td>菜单管理</td>
+    <td>1. 多级菜单管理，支持管理菜单名称、图标、行列排序、路径等<br />2. 支持默认、iframe嵌入、链接跳转三种类型的菜单样式<br />3. 支持设置是否可见；设置菜单的角色权限等<br />4. 支持使用JSON格式的菜单数据实现更多自定义菜单配置</td>
+    </tr> 
+    <tr><td>设置管理</td>
+    <td>1. 账户中心，支持查看编辑手机、邮箱；修改密码等；支持查看所属租户项目 <br /> 2. 平台信息：查看正版授权信息、更新许可证等<br /> 3. API 凭证，支持查看、下载Kubeconfig</td>
+    </tr> 
+    <tr><td>操作审计</td>
+    <td>统一查看对资源的操作记录，支持租户、项目、集群、操作类型、状态、发起者等过滤查询</td>
+    </tr> 
 
-- [**底座 Kit**](./building-base/intro)
+</table>
 
-提供开箱即用的云原生服务门户，包括**用户、OIDC认证、权限、审计、租户管理、门户服务等基础组件以及证书管理、Nignx Ingress**等集群组件。
 
-- [**低码 Kit**](./lowcode-development/intro)
 
-低码 Kit 即云梯低代码平台，依托 [**Low-Code Engine**](https://lowcode-engine.cn/index) 和具有 Git 特性的关系数据库 [**Dolt**](https://www.dolthub.com/) 打造，并借助底座门户的**菜单和路由资源**以及内核套件的**组件管理**能力，实现组件开发、测试到上线的全链路能力。
+## 应用场景
 
-三个核心套件之间的关系可以类比一下**操作系统**:
+### 快速搭建您的云原生平台
 
-- **Kubernetes** ~ **操作系统内核**
-- **Core** ~ **软件安装器**
-- **底座Kit** ~ **操作系统的系统软件，如GUI、用户系统、网络等**
-- **低码组件开发Kit** ~ **操作系统软件开发工具**
+Kubebb 提供了多集群多租户管理、菜单管理、角色和成员管理、OIDC 认证等完善的平台基础能力。内置官方组件，通过云梯低代码组件可快速发布您的应用；通过微服务框架或服务网格统一管理和治理您的应用；通过应用性能监控统一观测服务调用，设置链路告警。同时您可发布自定义组件，例如容器服务组件，形成应用的全生命周期的管理和治理。
+![overview](./images/struc.png)
 
-## 内核Kit
-
-**内核Kit**的是现阶段我们重点关注并研发的[**项目**](https://github.com/kubebb/core),完全遵循开源项目管理规范。现阶段我们的目标:
-
-### 1. 声明式的组件全生命周期管理
-
-基于[**Operator Pattern**](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)开发,实现声明式的组件全生命周期管理。
-
-![component-lifecycle](./images/component-lifecycle.drawio.png)
-
-#### 提供四个核心的CRD实现:
-
-- [**Repository组件仓库**](./core/concepts/repository)
-
-定义了组件仓库的访问信息、轮询策略和过滤选项，从而实现周期性地向仓库服务获取最新的组件列表信息。
-
-- [**Component组件**](./core/concepts/component)
-
-记录组件的基础描述、版本列表、是否废弃等信息
-
-- [**ComponentPlan组件部署**](./core/concepts/componentplan)
-
-定义组件安装部署的手动批准、组件引用、版本设置、类helm的配置覆盖策略，从而实现组件的可追踪部署、升级和回滚。
-
-- [**Subscription组件订阅**](./core/concepts/subscription)
-
-定义了用户订阅组件版本更新
-
-#### 一个扩展CRD实现,集成[**Tekton Pipeline**](https://tekton.dev/):
-
-- [**Rating组件评级**](./core/rating)
-
-### 2. 开放组件市场
-
-组件市场是内核能力的**产品化**，作为一个适配**底座服务的组件**发布到官方组件仓库中使用，扩展KubeBB生态。
-
-## 底座Kit
-
-**底座Kit**通过集成以下组件从而提供统一的认证中心和门户入口:
-
-- `u4a-component` 提供账号、认证、权限及审计管理功能，包含以下主要资料
-    - [nginx ingress](https://docs.nginx.com/nginx-ingress-controller/)
-    - [cert-manager](https://cert-manager.io/)
-    - [基于 dex 构建](https://github.com/dexidp/dex)
-    - [多租户基于 capsule 构建](https://github.com/clastix/capsule)
-    - [oidc-proxy 基于 kube-oidc-proxy 构建](https://github.com/jetstack/kube-oidc-proxy)
-
-![portal](./images/kubebb_portal.png)
-
-## 低码 Kit
-
-**低码 Kit**提供[**三层组件开发模式**](./lowcode-development/development_pattern)中的[**前端模块研发**](./lowcode-development/development/frontend)、出码能力，并借助**内核 Kit**完成标准化打包、测试、发布，后续 BFF 层也会探索低码的开发模式。
-
-![lowcode_development](./images/lowcode-development.png)
-
-## 技术架构
-平台开发采取前后端分离，以 K8S 为核心的开发框架，遵循 K8S 的扩展机制及 API 规范，整体开发架构的基本逻辑如下图所示：
-![图 2](images/6b8d0cb645caee89c8df55940f5c5b3379940f8714667f8fb2dc780f3442b8f0.png)
-
-1. 所有组件的开发、扩展的认证都通过统一认证中心进行认证
-2. 认证由微前端的主框架 DockApp 统一进行，其他微前端的扩展不需要单独支持同认证中心的处理
-3. 开发架构上整体可以按照三层来看
-- 第一层，前端采用微前端架构，尽量采用低代码方式进行开发，提高代码自动化生成比例
-- 第二层，根据业务需求增加 OpenAPI，形成统一的 BFF 层，对 API 进行聚合，提供前端所需要的业务场景数据
-- 后端采用 CRD + controller 的 Operator 模式进行开发，形成数据驱动的流程开发模式
-1. 对外 API 主要包括两部分：
-- 从 BFF 层提供的 OpenAPI
-- 从 K8S 层提供的资源 API
-
-## 获取更多组件
-浏览 [组件市场](/docs/category/组件市场)，安装更多需要的服务组件到门户中，比如：
-* [kubedashboard](/docs/component-market/kubedashboard)
-* [kubelogin](/docs/component-market/kubelogin)

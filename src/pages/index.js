@@ -23,7 +23,7 @@ function HomepageHeader() {
               <div className={styles.buttons}>
                 <Link
                   className={styles['banner-button']}
-                  to="/docs/quick-start/prerequisite">
+                  to="/docs/quick-start/quick-install">
                   教程-5min →
                 </Link>
               </div>
@@ -48,7 +48,7 @@ function HomepageHeader() {
             <div className={styles.carddesc}>由内核驱动的组件生命周期管理，集成云原生底座和低码组件，整合实现云原生三层组件模式</div>
             <div className={clsx(styles.carddesc, styles.cardjoin)}>了解更多 →</div>
           </Link>
-          <Link to="/docs/quick-start/prerequisite" className={clsx('col col--4', styles.cardItem)}>
+          <Link to="/docs/quick-start/quick-install" className={clsx('col col--4', styles.cardItem)}>
             <div className={styles.cardtitle}>使用教程</div>
             <div className={styles.carddesc}>通过本教程，可以快速搭建一个基于 Kubebb 的门户底座，并开发一个自己的 Hello world 组件，部署到门户上进行体验</div>
             <div className={clsx(styles.carddesc, styles.cardjoin)}>了解更多 →</div>

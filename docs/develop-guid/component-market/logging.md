@@ -9,13 +9,12 @@ sidebar_position: 2
 
 ### 功能描述
 1. helm package包含了安装elasticsearch和对外暴露elasticsearch服务的ingress资源文件;
-2. 支持配置的组件包括以下几个： 
-  > - rbacSidecar(.Values.rbacSidecar.enabled): 在elasticsearch client节点上安装kube-rbac-proxy sidecar 用来认证用户token
-  > - ingress(.Values.ingress.enabled): 通过ingress暴露elasticsearch服务，按需开启，默认为 true
-
-rbacSidecar 和 elasticsearch.secure 仅能使用其中一种，比如:
-> - .Values.rbacSidecar.enabled: true, .Values.elasticsearch.secure: false
-> - .Values.rbacSidecar.enabled: false, .Values.elasticsearch.secure: true
+2. 支持配置的组件包括以下几个:
+- rbacSidecar(.Values.rbacSidecar.enabled)：在elasticsearch client 节点上安装 kube-rbac-proxy sidecar 用来认证用户 token
+- ingress(.Values.ingress.enabled)：通过 ingress 暴露 elasticsearch 服务，按需开启，默认为 true
+- rbacSidecar 和 elasticsearch.secure 仅能使用其中一种，比如:
+  - .Values.rbacSidecar.enabled: true, .Values.elasticsearch.secure: false
+  - .Values.rbacSidecar.enabled: false, .Values.elasticsearch.secure: true
 
 ### values 字段解释
 

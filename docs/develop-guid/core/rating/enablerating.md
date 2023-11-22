@@ -109,7 +109,7 @@ arcadia-5cb86f8787-jvd7j                             0/1     Running            
 arcadia-5cb86f8787-jvd7j                             1/1     Running             0          30s
 ```
 
-### 5. 更新内核
+## 5. 更新内核
 
 通过设置参数`deployment.rating_enable=true`来启用Rating
 

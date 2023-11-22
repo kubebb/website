@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # 介绍
 
-[内核](https://github.com/kubebb/core)基于[kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)模式进行开发，提供完整的组件生命周期管理、组件订阅和自动化部署能力，并通过[tekton](https://tekton.dev/)扩展实现组件自动化评级和安装前校验等能力。
+[内核](https://github.com/kubebb/core)基于[kubernetes operator](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/)模式进行开发，提供完整的组件生命周期管理、组件订阅和自动化部署能力，并通过[tekton](https://tekton.dev/)扩展实现组件自动化评测和安装前校验等能力。
 
 ## 整体架构
 
@@ -49,11 +49,11 @@ sidebar_position: 1
 - **可扩展性：**更易于扩展组件，因为它们通常是基于组件和模块的，可以简单地组合起来创建更复杂的系统。
 - **可靠性：**更可靠，因为它们通常是基于静态配置的，而不是基于运行时状态的。这意味着它们更少出现运行时错误和意外行为。
 
-### 多维度组件评级
+### 多维度组件评测
 
-通过集成[Tekton](https://github.com/kubebb/components/tree/main/examples/tekton-operator)流水线组件，实现自动化的组件评级，并通过`CRD Rating`完成评测数据总结和分析。
+通过集成[Tekton](https://github.com/kubebb/components/tree/main/examples/tekton-operator)流水线组件，实现自动化的组件评测，并通过`CRD Rating`完成评测数据总结和分析。
 
-目前组件评级围绕三个维度展开:
+目前组件评测围绕三个维度展开:
 
 - [**安全性:**](./rating#安全性任务) 评估组件的安全性和软件供应链的安全性。
 - [**可靠性:**](./rating#可靠性任务) 评估组件本身是否已经过良好的功能测试、性能测试

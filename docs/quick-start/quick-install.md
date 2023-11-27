@@ -189,7 +189,7 @@ spec:
 
 - `override.set.ingress-nginx.controller.nodeSelector.kubernetes\.io/hostname` 将作为[ingress-nginx](https://github.com/kubebb/components/tree/main/charts/cluster-component/charts/ingress-nginx)服务节点
 
-> 此处基于[kind开发集群](./prerequisite#kind开发集群)的`kubebb-core-control-plane`节点。
+> 此处基于[kind开发集群](#准备环境)的`kubebb-core-control-plane`节点。
 
 通过一下命令部署:
 

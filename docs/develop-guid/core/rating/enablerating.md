@@ -7,7 +7,7 @@ sidebar_position: 1
 默认情况下，Rating组件评级功能是关闭的，需要手动启用。我们建议按照以下步骤启用Rating:
 
 :::tip
-详细了解更多Rating有关内容，请参考[组件评测设计](../rating)和[Rating CRD定义](../concepts/rating)
+详细了解更多Rating有关内容，请参考[组件评测设计](../rating/rating.md)和[Rating CRD定义](../concepts/rating.md)
 :::
 
 **Rating**依赖两个组件，分别是:
@@ -109,7 +109,7 @@ arcadia-5cb86f8787-jvd7j                             0/1     Running            
 arcadia-5cb86f8787-jvd7j                             1/1     Running             0          30s
 ```
 
-### 5. 更新内核
+## 5. 更新内核
 
 通过设置参数`deployment.rating_enable=true`来启用Rating
 

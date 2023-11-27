@@ -8,14 +8,17 @@ sidebar_position: 2
 * [ingress-without-auth](#2-ingress-下不开启-rbac-认证)
 
 ### 功能描述
-1. helm package包含了安装elasticsearch和对外暴露elasticsearch服务的ingress资源文件;
-2. 支持配置的组件包括以下几个： 
-  > - rbacSidecar(.Values.rbacSidecar.enabled): 在elasticsearch client节点上安装kube-rbac-proxy sidecar 用来认证用户token
-  > - ingress(.Values.ingress.enabled): 通过ingress暴露elasticsearch服务，按需开启，默认为 true
 
-rbacSidecar 和 elasticsearch.secure 仅能使用其中一种，比如:
-> - .Values.rbacSidecar.enabled: true, .Values.elasticsearch.secure: false
-> - .Values.rbacSidecar.enabled: false, .Values.elasticsearch.secure: true
+1. helm package包含了安装elasticsearch和对外暴露elasticsearch服务的ingress资源文件;
+2. 支持配置的组件包括以下几个:
+
+  > - rbacSidecar(.Values.rbacSidecar.enabled)：在elasticsearch client 节点上安装 kube-rbac-proxy sidecar 用来认证用户 token
+  > - ingress(.Values.ingress.enabled)：通过 ingress 暴露 elasticsearch 服务，按需开启，默认为 true
+  
+3. rbacSidecar 和 elasticsearch.secure 仅能使用其中一种，比如:
+
+  > - .Values.rbacSidecar.enabled: true, .Values.elasticsearch.secure: false
+  > - .Values.rbacSidecar.enabled: false, .Values.elasticsearch.secure: true
 
 ### values 字段解释
 
@@ -129,11 +132,13 @@ ingress:
 ## 安装测试
 
 ### <a name="test-with-ingress-and-rbac">1. 使用 ingress 与 RBAC 认证方式</a>
+
 > - .Values.rbacSidecar.enabled: true
 > - .Values.elasticsearch.secure: false
 > - .Values.ingress.enabled false
 
 #### 依赖镜像
+
 > hub.tenxcloud.com/system_containers/elasticsearch-operator                        v5.4.1              89aeaffad933   2 hours ago     30.8MB
 > hub.tenxcloud.com/system_containers/elasticsearch                                 7.10.1-ik           3bf941c09b95   8 months ago    963MB
 > hub.tenxcloud.com/system_containers/kubectl                                       v1.20.8             403754878e80   3 months ago    112MB

@@ -18,8 +18,8 @@ sidebar_position: 2
 
 :::tip
 
-- 参考[启用组件评测](./userguide/enablerating)快速使用Rating
-- 参考[组件评测概念](./concepts/rating)了解Rating的实现原理
+- 参考[启用组件评测](./enablerating.md)快速部署Rating
+- 参考[组件评测概念](../concepts/rating.md)了解Rating的实现原理
 
 :::
 

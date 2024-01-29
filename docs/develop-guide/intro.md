@@ -106,5 +106,5 @@ Kubebb提供三个**套件**：
 ## 获取更多组件
 
 浏览 [组件市场](/docs/category/组件市场)，安装更多需要的服务组件到门户中，比如：
-* [kubedashboard](/docs/develop-guid/component-market/kubedashboard.md)
-* [kubelogin](/docs/develop-guid/component-market/kubelogin.md)
+* [kubedashboard](/docs/develop-guide/component-market/kubedashboard.md)
+* [kubelogin](/docs/develop-guide/component-market/kubelogin.md)

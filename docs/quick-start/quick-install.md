@@ -280,6 +280,10 @@ kube-oidc-proxy-server-ingress   <none>   k8s.172.18.0.2.nip.io                8
 
 > 注意: 由于使用了[nip.io](https://nip.io/)作为域名解析服务，因此需要将`HOSTS`中的域名解析到`ADDRESS`对应的IP地址上。
 
+### 6. 安装组件市场
+
+参考 [组件市场](https://github.com/kubebb/components/tree/main/charts/component-store) 的部署文档进行安装，参考[用户手册](../user-guide/component_market.md) 进行组件的浏览和使用。
+
 ## 卸载
 
 ### 1. 卸载U4A Component

@@ -117,15 +117,15 @@ const config = {
               },
               {
                 label: '内核 Kit',
-                to: '/docs/develop-guid/core/intro',
+                to: '/docs/develop-guide/core/intro',
               },
               {
                 label: '底座 Kit',
-                to: '/docs/develop-guid/building-base/intro',
+                to: '/docs/develop-guide/building-base/intro',
               },
               {
                 label: '低码 Kit',
-                to: '/docs/develop-guid/lowcode-development/intro',
+                to: '/docs/develop-guide/lowcode-development/intro',
               },
             ],
           },
@@ -150,7 +150,7 @@ const config = {
               },
               {
                 label: '云梯低代码平台',
-                to: '/docs/develop-guid/lowcode-development/intro',
+                to: '/docs/develop-guide/lowcode-development/intro',
               },
             ],
           },

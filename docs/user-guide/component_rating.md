@@ -8,13 +8,13 @@ sidebar_label: 组件评测
 
 ## 评测规则说明
 
-内置安全性、可靠性、可用性三类评测任务，将任务执行结果发给 AI 进行评估。AI 分三个类别返回评分和评估结果，最终组件评分取平均值。具体评测任务介绍和评估规则技术说明，详见[**内核Kit/组件评测**](../develop-guid/core/rating/rating.md)
+内置安全性、可靠性、可用性三类评测任务，将任务执行结果发给 AI 进行评估。AI 分三个类别返回评分和评估结果，最终组件评分取平均值。具体评测任务介绍和评估规则技术说明，详见[**内核Kit/组件评测**](../develop-guide/core/rating/rating.md)
 
 ## 发起评测
 
 :::tip
 前提条件
-- 已部署 Tekton 和 Arcadia ，部署说明详见[**快速部署**](../develop-guid/core/rating/enablerating.md)
+- 已部署 Tekton 和 Arcadia ，部署说明详见[**快速部署**](../develop-guide/core/rating/enablerating.md)
 - 组件所属组件仓库需开启`组件评测`
 - 用户需要被管理员授予评测权限
 :::

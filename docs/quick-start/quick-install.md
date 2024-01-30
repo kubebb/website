@@ -7,7 +7,7 @@ sidebar_position: 1
 ## 准备环境
 
 准备基础环境
-
+- [Docker](https://docs.docker.com/engine/install/) 
 - [Helm](https://helm.sh/docs/intro/install/) +3.0 客户端
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) 客户端
 

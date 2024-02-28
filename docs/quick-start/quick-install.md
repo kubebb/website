@@ -176,7 +176,7 @@ metadata:
 spec:
   approved: true
   name: cluster-component
-  version: 0.1.4
+  version: ""
   override:
     set:
     - ingress-nginx.controller.nodeSelector.kubernetes\.io/hostname=kubebb-core-control-plane
@@ -235,7 +235,7 @@ metadata:
 spec:
   approved: true
   name: u4a-component
-  version: 0.1.10
+  version: ""
   wait: true
   override:
     valuesFrom:

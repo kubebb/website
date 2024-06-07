@@ -62,6 +62,10 @@ spec:
     name: github
 ```
 
-6. 配置完毕后，重启 oidc-server 服务即可生效，此时再次访问登录页面，既可看到对应的登录图标。
+6. 通过第三方登录时，需要在 oidc-server 的 configMap 中的 staticClients -> redirectURIs 添加新的重定向地址：
+
+https://portal.172.22.96.209.nip.io/dock-app?third_party_bind_login=true
+
+7. 配置完毕后，重启 oidc-server 服务即可生效，此时再次访问登录页面，既可看到对应的登录图标。
 
 ![图 4](images/94ca51f03578085968c8e1ffd03f27606ed0d473e32d5eb511feff0513e4ff11.png)  

@@ -323,7 +323,7 @@ chartmuseum-6c4bc46898-6jj4b   1/1     Running   0          13s
 
     ```shell
     cd components/charts/chartmuseum
-    helm pacakge .
+    helm package .
 
     # 成功将会输出 {"saved":true}
     curl --data-binary "@chartmuseum-3.10.1.tgz" http://localhost:8080/api/charts
